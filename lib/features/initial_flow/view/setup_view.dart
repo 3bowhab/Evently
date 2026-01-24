@@ -1,6 +1,5 @@
 import 'package:evently/core/constants/app_images.dart';
 import 'package:evently/core/constants/app_utils.dart';
-import 'package:evently/core/theme/app_colors.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -21,7 +20,13 @@ class SetupView extends StatelessWidget {
             children: [
               Image.asset(Assets.imagesEventlyIcon),
               sizedBox(context, 24),
-              SvgPicture.asset(Assets.svgBeingCreative2),
+              SvgPicture.asset(
+                Assets.svgBeingCreative2,
+                colorFilter: ColorFilter.mode(
+                  Theme.of(context).iconTheme.color!,
+                  BlendMode.srcIn,
+                ),
+              ),
               sizedBox(context, 24),
               Text(
                 AppLocalizations.of(context)!.personalizeYourExperience,
@@ -37,10 +42,8 @@ class SetupView extends StatelessWidget {
                 children: [
                   Text(
                     AppLocalizations.of(context)!.language,
-                    style: TextStyle(
-                      color: AppColors.main,
-                      fontSize: 24,
-                      fontWeight: FontWeight.w500,
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      color: Theme.of(context).colorScheme.tertiary,
                     ),
                   ),
                 ],

@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         Locale('en'), // English
         Locale('ar'), // Arabic
       ],
-      locale: Locale('ar'),
+      locale: Locale('en'),
 
       // dynamic font based on locale
       builder: (context, child) {

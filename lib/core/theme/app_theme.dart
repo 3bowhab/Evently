@@ -15,6 +15,7 @@ class AppTheme {
       onSurface: AppColors.mainText,
       error: AppColors.red,
       onError: AppColors.white,
+      tertiary: AppColors.main,
     ),
     scaffoldBackgroundColor: AppColors.background,
     appBarTheme: const AppBarTheme(
@@ -60,6 +61,7 @@ class AppTheme {
       labelColor: AppColors.white,
       unselectedLabelColor: AppColors.main,
     ),
+    iconTheme: const IconThemeData(color: AppColors.main),
     navigationBarTheme: NavigationBarThemeData(
       backgroundColor: AppColors.white,
       elevation: 0,
@@ -103,6 +105,7 @@ class AppTheme {
       onSurface: AppColors.inputs,
       error: AppColors.red,
       onError: AppColors.white,
+      tertiary: AppColors.white,
     ),
     scaffoldBackgroundColor: AppColors.backgroundDarkMode,
     appBarTheme: const AppBarTheme(
@@ -147,6 +150,7 @@ class AppTheme {
       labelColor: AppColors.white,
       unselectedLabelColor: AppColors.white,
     ),
+    iconTheme: const IconThemeData(color: AppColors.white),
     navigationBarTheme: NavigationBarThemeData(
       backgroundColor: AppColors.backgroundDarkMode,
       elevation: 0,
