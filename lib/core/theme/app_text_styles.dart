@@ -13,7 +13,7 @@ class AppTextStyles {
       TextStyle(fontSize: 16, fontWeight: FontWeight.w600);
 
   static TextStyle get titleLarge =>
-      TextStyle(fontSize: 20, fontWeight: FontWeight.w500);
+      TextStyle(fontSize: 20, fontWeight: FontWeight.w600);
     
   static TextStyle get titleMedium =>
       TextStyle(fontSize: 16, fontWeight: FontWeight.w500);

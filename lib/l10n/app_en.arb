@@ -1,5 +1,19 @@
 {
+    "@@locale": "en",
     "personalizeYourExperience" : "Personalize your experience",
+    "@personalizeYourExperience": {},
     "chooseYourPreferred" : "Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style.",
-    "language" : "Language"
+    "@chooseYourPreferred": {},
+    "language" : "Language",
+    "@language": {},
+    "home" : "Home",
+    "@home": {},
+    "favorite" : "Favorite",
+    "@favorite": {},
+    "profile" : "Profile",
+    "@profile": {},
+    "darkMode" : "Dark Mode",
+    "@darkMode": {},
+    "logout" : "Logout",
+    "@logout": {}
 }

@@ -1,5 +1,11 @@
 {
+    "@@locale": "ar",
     "personalizeYourExperience" : "خصص تجربتك",
     "chooseYourPreferred" : "اختر السمة واللغة المفضلة لديك لتبدأ بتجربة مريحة ومصممة خصيصًا لتناسب أسلوبك.",
-    "language" : "اللغة"
+    "language" : "اللغة",
+    "home" : "الصفحة الرئيسية",
+    "favorite" : "المفضلة",
+    "profile" : "الملف الشخصي",
+    "darkMode" : "الوضع الداكن",
+    "logout" : "تسجيل الخروج"
 }

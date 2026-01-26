@@ -12,7 +12,7 @@ class AppTheme {
       secondary: AppColors.secText,
       onSecondary: AppColors.white,
       surface: AppColors.white,
-      onSurface: AppColors.mainText,
+      onSurface: AppColors.stroke,
       error: AppColors.red,
       onError: AppColors.white,
       tertiary: AppColors.main,
@@ -33,24 +33,14 @@ class AppTheme {
       headlineSmall: AppTextStyles.headlineSmall.copyWith(
         color: AppColors.mainText,
       ),
-      titleLarge: AppTextStyles.titleLarge.copyWith(
-        color: AppColors.mainText,
-      ),
+      titleLarge: AppTextStyles.titleLarge.copyWith(color: AppColors.mainText),
       titleMedium: AppTextStyles.titleMedium.copyWith(
         color: AppColors.mainText,
       ),
-      titleSmall: AppTextStyles.titleSmall.copyWith(
-        color: AppColors.mainText,
-      ),
-      bodyLarge: AppTextStyles.bodyLarge.copyWith(
-        color: AppColors.secText,
-      ),
-      bodyMedium: AppTextStyles.bodyMedium.copyWith(
-        color: AppColors.secText,
-      ),
-      bodySmall: AppTextStyles.bodySmall.copyWith(
-        color: AppColors.mainText,
-      ),
+      titleSmall: AppTextStyles.titleSmall.copyWith(color: AppColors.mainText),
+      bodyLarge: AppTextStyles.bodyLarge.copyWith(color: AppColors.secText),
+      bodyMedium: AppTextStyles.bodyMedium.copyWith(color: AppColors.secText),
+      bodySmall: AppTextStyles.bodySmall.copyWith(color: AppColors.mainText),
     ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: AppColors.main,
@@ -66,17 +56,16 @@ class AppTheme {
       backgroundColor: AppColors.white,
       elevation: 0,
       indicatorColor: Colors.transparent,
-      labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
       labelTextStyle: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.selected)) {
           return const TextStyle(
             color: AppColors.main,
             fontWeight: FontWeight.bold,
-            fontSize: 14, 
+            fontSize: 14,
           );
         }
         return const TextStyle(
-          color: AppColors.mainText,
+          color: AppColors.disabled,
           fontWeight: FontWeight.normal,
           fontSize: 14,
         );
@@ -85,12 +74,10 @@ class AppTheme {
         if (states.contains(WidgetState.selected)) {
           return const IconThemeData(color: AppColors.main, size: 28);
         }
-        return const IconThemeData(color: AppColors.mainText, size: 28);
+        return const IconThemeData(color: AppColors.disabled, size: 28);
       }),
     ),
   );
-
-
 
   // Dark Theme
   static ThemeData get darkTheme => ThemeData(
@@ -102,7 +89,7 @@ class AppTheme {
       secondary: AppColors.secTextDarkMode,
       onSecondary: AppColors.white,
       surface: AppColors.inputs,
-      onSurface: AppColors.inputs,
+      onSurface: AppColors.strokeDarkMode,
       error: AppColors.red,
       onError: AppColors.white,
       tertiary: AppColors.white,
@@ -123,15 +110,9 @@ class AppTheme {
       headlineSmall: AppTextStyles.headlineSmall.copyWith(
         color: AppColors.white,
       ),
-      titleLarge: AppTextStyles.titleLarge.copyWith(
-        color: AppColors.white,
-      ),
-      titleMedium: AppTextStyles.titleMedium.copyWith(
-        color: AppColors.white,
-      ),
-      titleSmall: AppTextStyles.titleSmall.copyWith(
-        color: AppColors.white,
-      ),
+      titleLarge: AppTextStyles.titleLarge.copyWith(color: AppColors.white),
+      titleMedium: AppTextStyles.titleMedium.copyWith(color: AppColors.white),
+      titleSmall: AppTextStyles.titleSmall.copyWith(color: AppColors.white),
       bodyLarge: AppTextStyles.bodyLarge.copyWith(
         color: AppColors.secTextDarkMode,
       ),
@@ -145,6 +126,7 @@ class AppTheme {
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: AppColors.mainDarkMode,
       foregroundColor: AppColors.white,
+      shape: CircleBorder(),
     ),
     tabBarTheme: const TabBarThemeData(
       labelColor: AppColors.white,
@@ -164,7 +146,7 @@ class AppTheme {
           );
         }
         return const TextStyle(
-          color: AppColors.mainDarkMode,
+          color: AppColors.disabled,
           fontWeight: FontWeight.bold,
           fontSize: 14,
         );
@@ -173,7 +155,7 @@ class AppTheme {
         if (states.contains(WidgetState.selected)) {
           return const IconThemeData(color: AppColors.mainDarkMode, size: 28);
         }
-        return const IconThemeData(color: AppColors.inputs, size: 28);
+        return const IconThemeData(color: AppColors.disabled, size: 28);
       }),
     ),
   );

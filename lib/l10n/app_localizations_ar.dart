@@ -17,4 +17,19 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get language => 'اللغة';
+
+  @override
+  String get home => 'الصفحة الرئيسية';
+
+  @override
+  String get favorite => 'المفضلة';
+
+  @override
+  String get profile => 'الملف الشخصي';
+
+  @override
+  String get darkMode => 'الوضع الداكن';
+
+  @override
+  String get logout => 'تسجيل الخروج';
 }

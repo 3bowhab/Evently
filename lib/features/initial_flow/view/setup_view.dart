@@ -1,6 +1,6 @@
 import 'package:evently/core/constants/app_images.dart';
 import 'package:evently/core/constants/app_padding.dart';
-import 'package:evently/core/extensions/responsive_spacing_extension.dart';
+import 'package:evently/core/extensions/responsive_sized_box_extension.dart';
 import 'package:evently/core/responsive/responsive_config.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +21,7 @@ class SetupView extends StatelessWidget {
             crossAxisAlignment: .stretch,
             children: [
               Image.asset(Assets.imagesEventlyIcon),
-              24.verticalSpace,
+              24.verticalSizedBox,
               SvgPicture.asset(
                 Assets.svgBeingCreative2,
                 colorFilter: ColorFilter.mode(
@@ -29,17 +29,17 @@ class SetupView extends StatelessWidget {
                   BlendMode.srcIn,
                 ),
               ),
-              24.verticalSpace,
+              24.verticalSizedBox,
               Text(
                 AppLocalizations.of(context)!.personalizeYourExperience,
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
-              8.verticalSpace,
+              8.verticalSizedBox,
               Text(
                 AppLocalizations.of(context)!.chooseYourPreferred,
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
-              16.verticalSpace,
+              16.verticalSizedBox,
               Row(
                 children: [
                   Text(
