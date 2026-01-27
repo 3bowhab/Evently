@@ -1,9 +1,9 @@
 import 'package:evently/core/constants/app_images.dart';
 import 'package:evently/core/constants/app_padding.dart';
 import 'package:evently/core/responsive/responsive_config.dart';
-import 'package:evently/features/main_layout/tabs/favorite/favorite_tab.dart';
-import 'package:evently/features/main_layout/tabs/home/home_tab.dart';
-import 'package:evently/features/main_layout/tabs/profile/profile_tab.dart';
+import 'package:evently/ui/main_layout/tabs/favorite/favorite_tab.dart';
+import 'package:evently/ui/main_layout/tabs/home/home_tab.dart';
+import 'package:evently/ui/main_layout/tabs/profile/profile_tab.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 

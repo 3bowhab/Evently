@@ -1,13 +1,20 @@
 import 'package:evently/core/constants/app_routes.dart';
 import 'package:evently/core/theme/app_theme.dart';
-import 'package:evently/features/initial_flow/view/setup_view.dart';
-import 'package:evently/features/main_layout/main_layout_view.dart';
+import 'package:evently/providers/theme_provider.dart';
+import 'package:evently/ui/initial_flow/view/setup_view.dart';
+import 'package:evently/ui/main_layout/main_layout_view.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider<ThemeProvider>(
+      create: (BuildContext context) => ThemeProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -15,6 +22,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 
@@ -40,7 +48,7 @@ class MyApp extends StatelessWidget {
       // Theme setup
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.light,
+      themeMode: themeProvider.currentMode,
 
       // Initial route setup
       initialRoute: AppRoutes.mainLayoutView,
