@@ -3,8 +3,8 @@ import 'package:evently/providers/language_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class LanguageBox extends StatelessWidget {
-  const LanguageBox({super.key});
+class LanguageChanger extends StatelessWidget {
+  const LanguageChanger({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
     final languageProvider = Provider.of<LanguageProvider>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      
 
       // Localization setup
       localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
 
       // dynamic font based on locale
       builder: (context, child) {
-        final lang = Localizations.localeOf(context).languageCode;
+        final lang = languageProvider.currentLanguage;
 
         return Theme(
           data: Theme.of(context).copyWith(

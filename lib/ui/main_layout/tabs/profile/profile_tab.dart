@@ -3,8 +3,8 @@ import 'package:evently/core/extensions/responsive_padding_extension.dart';
 import 'package:evently/core/extensions/responsive_size_extension.dart';
 import 'package:evently/core/extensions/responsive_sized_box_extension.dart';
 import 'package:evently/providers/theme_provider.dart';
-import 'package:evently/ui/main_layout/tabs/profile/language_box.dart';
-import 'package:evently/ui/main_layout/tabs/profile/setting_widget.dart';
+import 'package:evently/ui/main_layout/tabs/home/widgets/language_changer.dart';
+import 'package:evently/ui/main_layout/tabs/profile/widgets/setting_widget.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -15,9 +15,11 @@ class ProfileTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context, listen: true);
+
     return Column(
       crossAxisAlignment: .stretch,
       children: [
+        // Profile Picture
         Container(
           height: 116.square,
           width: 116.square,
@@ -30,18 +32,24 @@ class ProfileTab extends StatelessWidget {
           ),
         ),
         16.verticalSizedBox,
+
+        // Name
         Text(
           "John Safwat",
           style: Theme.of(context).textTheme.titleLarge,
           textAlign: TextAlign.center,
         ),
         4.verticalSizedBox,
+
+        // Email
         Text(
           "johnsafwat.route@gmail.com",
           style: Theme.of(context).textTheme.bodyMedium,
           textAlign: TextAlign.center,
         ),
         32.verticalSizedBox,
+
+        // Dark Mode Toggle
         SettingWidget(
           title: AppLocalizations.of(context)!.darkMode,
           trailing: Transform.scale(
@@ -57,14 +65,18 @@ class ProfileTab extends StatelessWidget {
           ),
         ),
         16.verticalSizedBox,
+
+        // Language Selection
         SettingWidget(
           title: AppLocalizations.of(context)!.language,
           trailing: Padding(
             padding: 10.horizontalPadding,
-            child: LanguageBox(),
+            child: LanguageChanger(),
           ),
         ),
         16.verticalSizedBox,
+
+        // Logout
         SettingWidget(
           title: AppLocalizations.of(context)!.logout,
           trailing: Padding(

@@ -27,6 +27,7 @@ class _MainLayoutViewState extends State<MainLayoutView> {
         onPressed: () {},
         child: const Icon(Icons.add, size: 32),
       ),
+
       bottomNavigationBar: ClipRRect(
         borderRadius: BorderRadius.vertical(top: Radius.circular(32)),
         child: NavigationBar(
@@ -42,11 +43,13 @@ class _MainLayoutViewState extends State<MainLayoutView> {
               selectedIcon: ImageIcon(AssetImage(Assets.iconsHomeSelected)),
               label: AppLocalizations.of(context)!.home,
             ),
+
             NavigationDestination(
               icon: ImageIcon(AssetImage(Assets.iconsHeartUnselected)),
               selectedIcon: ImageIcon(AssetImage(Assets.iconsHeartSelected)),
               label: AppLocalizations.of(context)!.favorite,
             ),
+            
             NavigationDestination(
               icon: ImageIcon(AssetImage(Assets.iconsUserUnselected)),
               selectedIcon: ImageIcon(AssetImage(Assets.iconsUserSelected)),
