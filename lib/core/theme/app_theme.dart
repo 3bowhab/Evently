@@ -37,7 +37,7 @@ class AppTheme {
       titleMedium: AppTextStyles.titleMedium.copyWith(
         color: AppColors.mainText,
       ),
-      titleSmall: AppTextStyles.titleSmall.copyWith(color: AppColors.mainText),
+      titleSmall: AppTextStyles.titleSmall.copyWith(color: AppColors.white),
       bodyLarge: AppTextStyles.bodyLarge.copyWith(color: AppColors.secText),
       bodyMedium: AppTextStyles.bodyMedium.copyWith(color: AppColors.secText),
       bodySmall: AppTextStyles.bodySmall.copyWith(color: AppColors.mainText),

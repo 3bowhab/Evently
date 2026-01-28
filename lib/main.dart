@@ -1,5 +1,6 @@
 import 'package:evently/core/constants/app_routes.dart';
 import 'package:evently/core/theme/app_theme.dart';
+import 'package:evently/providers/language_provider.dart';
 import 'package:evently/providers/theme_provider.dart';
 import 'package:evently/ui/initial_flow/view/setup_view.dart';
 import 'package:evently/ui/main_layout/main_layout_view.dart';
@@ -10,8 +11,11 @@ import 'package:provider/provider.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider<ThemeProvider>(
-      create: (BuildContext context) => ThemeProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<ThemeProvider>(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider<LanguageProvider>(create: (_) => LanguageProvider()),
+      ],
       child: const MyApp(),
     ),
   );
@@ -23,13 +27,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
+    final languageProvider = Provider.of<LanguageProvider>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 
       // Localization setup
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      locale: Locale('en'),
+      locale: Locale(languageProvider.currentLanguage),
 
       // dynamic font based on locale
       builder: (context, child) {

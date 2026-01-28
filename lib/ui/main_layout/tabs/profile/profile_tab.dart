@@ -3,6 +3,7 @@ import 'package:evently/core/extensions/responsive_padding_extension.dart';
 import 'package:evently/core/extensions/responsive_size_extension.dart';
 import 'package:evently/core/extensions/responsive_sized_box_extension.dart';
 import 'package:evently/providers/theme_provider.dart';
+import 'package:evently/ui/main_layout/tabs/profile/language_box.dart';
 import 'package:evently/ui/main_layout/tabs/profile/setting_widget.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -58,12 +59,11 @@ class ProfileTab extends StatelessWidget {
         16.verticalSizedBox,
         SettingWidget(
           title: AppLocalizations.of(context)!.language,
-          trailing: Transform.scale(
-            scale: .7,
-            child: Switch(value: true, onChanged: (val) {}),
+          trailing: Padding(
+            padding: 10.horizontalPadding,
+            child: LanguageBox(),
           ),
         ),
-
         16.verticalSizedBox,
         SettingWidget(
           title: AppLocalizations.of(context)!.logout,
