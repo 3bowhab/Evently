@@ -32,4 +32,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get logout => 'Logout';
+
+  @override
+  String get welcomeBack => 'Welcome Back!';
+
+  @override
+  String get all => 'All';
+
+  @override
+  String get sport => 'Sports';
+
+  @override
+  String get birthday => 'Birthday';
+
+  @override
+  String get bookClub => 'Book club';
+
+  @override
+  String get exhibition => 'Exhibition';
+
+  @override
+  String get meetings => 'Meetings';
 }

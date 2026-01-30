@@ -7,5 +7,12 @@
     "favorite" : "المفضلة",
     "profile" : "الملف الشخصي",
     "darkMode" : "الوضع الداكن",
-    "logout" : "تسجيل الخروج"
+    "logout" : "تسجيل الخروج",
+    "welcomeBack" : "مرحبًا بعودتك!",
+    "all": "الكل",
+    "sport": "الرياضة",
+    "birthday": "عيد الميلاد",
+    "bookClub": "نادي الكتاب",
+    "exhibition": "المعرض",
+    "meetings": "الاجتماعات"
 }

@@ -15,5 +15,19 @@
     "darkMode" : "Dark Mode",
     "@darkMode": {},
     "logout" : "Logout",
-    "@logout": {}
+    "@logout": {},
+    "welcomeBack" : "Welcome Back!",
+    "@welcomeBack": {},
+    "all": "All",
+    "@all": {},
+    "sport": "Sports",
+    "@sport": {},
+    "birthday": "Birthday",
+    "@birthday": {},
+    "bookClub": "Book club",
+    "@bookClub": {},
+    "exhibition": "Exhibition",
+    "@exhibition": {},
+    "meetings": "Meetings",
+    "@meetings": {}
 }

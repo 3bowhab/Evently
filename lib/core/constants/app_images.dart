@@ -30,13 +30,53 @@ class Assets {
   /// assets/icons/user_unselected.png
   static const String iconsUserUnselected = "assets/icons/user_unselected.png";
 
+  /// Assets for imagesBirthdayDark
+  /// assets/images/Birthday_dark.png
+  static const String imagesBirthdayDark = "assets/images/Birthday_dark.png";
+
+  /// Assets for imagesBirthdayLight
+  /// assets/images/Birthday_light.png
+  static const String imagesBirthdayLight = "assets/images/Birthday_light.png";
+
+  /// Assets for imagesBookClubDark
+  /// assets/images/Book_club_dark.png
+  static const String imagesBookClubDark = "assets/images/Book_club_dark.png";
+
+  /// Assets for imagesBookClubLight
+  /// assets/images/Book_club_light.png
+  static const String imagesBookClubLight = "assets/images/Book_club_light.png";
+
   /// Assets for imagesEventlyIcon
   /// assets/images/evently_icon.png
   static const String imagesEventlyIcon = "assets/images/evently_icon.png";
 
+  /// Assets for imagesExhibitionDark
+  /// assets/images/Exhibition_dark.png
+  static const String imagesExhibitionDark = "assets/images/Exhibition_dark.png";
+
+  /// Assets for imagesExhibitionLight
+  /// assets/images/Exhibition_light.png
+  static const String imagesExhibitionLight = "assets/images/Exhibition_light.png";
+
+  /// Assets for imagesMeetingDark
+  /// assets/images/Meeting_dark.png
+  static const String imagesMeetingDark = "assets/images/Meeting_dark.png";
+
+  /// Assets for imagesMeetingLight
+  /// assets/images/Meeting_light.png
+  static const String imagesMeetingLight = "assets/images/Meeting_light.png";
+
   /// Assets for imagesRoute
   /// assets/images/route.png
   static const String imagesRoute = "assets/images/route.png";
+
+  /// Assets for imagesSportDark
+  /// assets/images/Sport_dark.png
+  static const String imagesSportDark = "assets/images/Sport_dark.png";
+
+  /// Assets for imagesSportLight
+  /// assets/images/Sport_light.png
+  static const String imagesSportLight = "assets/images/Sport_light.png";
 
   /// Assets for svgBeingCreative
   /// assets/svg/being_creative.svg

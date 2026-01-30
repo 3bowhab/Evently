@@ -32,4 +32,25 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get logout => 'تسجيل الخروج';
+
+  @override
+  String get welcomeBack => 'مرحبًا بعودتك!';
+
+  @override
+  String get all => 'الكل';
+
+  @override
+  String get sport => 'الرياضة';
+
+  @override
+  String get birthday => 'عيد الميلاد';
+
+  @override
+  String get bookClub => 'نادي الكتاب';
+
+  @override
+  String get exhibition => 'المعرض';
+
+  @override
+  String get meetings => 'الاجتماعات';
 }
