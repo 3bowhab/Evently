@@ -4,5 +4,5 @@ import 'package:flutter/material.dart';
 class AppPadding {
   AppPadding._();
 
-  static EdgeInsets get view => 16.allPadding;
+  static EdgeInsets get view => 16.horizontalPadding;
 }

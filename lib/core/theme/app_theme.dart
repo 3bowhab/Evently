@@ -16,12 +16,14 @@ class AppTheme {
       error: AppColors.red,
       onError: AppColors.white,
       tertiary: AppColors.main,
+      secondaryContainer: AppColors.background
     ),
     scaffoldBackgroundColor: AppColors.background,
     appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.background,
       elevation: 0,
       centerTitle: true,
+      surfaceTintColor: Colors.transparent,
     ),
     textTheme: TextTheme(
       headlineLarge: AppTextStyles.headlineLarge.copyWith(
@@ -47,9 +49,16 @@ class AppTheme {
       foregroundColor: AppColors.white,
       shape: CircleBorder(),
     ),
-    tabBarTheme: const TabBarThemeData(
+    tabBarTheme: TabBarThemeData(
       labelColor: AppColors.white,
       unselectedLabelColor: AppColors.main,
+      labelStyle: const TextStyle(
+        fontWeight: FontWeight.bold,
+      ),
+      indicator: BoxDecoration(
+        color: AppColors.main,
+        borderRadius: BorderRadius.circular(15),
+      ),
     ),
     iconTheme: const IconThemeData(color: AppColors.main),
     navigationBarTheme: NavigationBarThemeData(
@@ -93,6 +102,7 @@ class AppTheme {
       error: AppColors.red,
       onError: AppColors.white,
       tertiary: AppColors.white,
+      secondaryContainer: AppColors.backgroundDarkMode
     ),
     scaffoldBackgroundColor: AppColors.backgroundDarkMode,
     appBarTheme: const AppBarTheme(
@@ -128,9 +138,14 @@ class AppTheme {
       foregroundColor: AppColors.white,
       shape: CircleBorder(),
     ),
-    tabBarTheme: const TabBarThemeData(
+    tabBarTheme: TabBarThemeData(
       labelColor: AppColors.white,
-      unselectedLabelColor: AppColors.white,
+      unselectedLabelColor: AppColors.mainDarkMode,
+      labelStyle: TextStyle(fontWeight: FontWeight.bold, color: AppColors.white),
+      indicator: BoxDecoration(
+        color: AppColors.mainDarkMode,
+        borderRadius: BorderRadius.circular(15),
+      ),
     ),
     iconTheme: const IconThemeData(color: AppColors.white),
     navigationBarTheme: NavigationBarThemeData(
