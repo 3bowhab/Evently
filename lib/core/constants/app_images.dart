@@ -46,9 +46,21 @@ class Assets {
   /// assets/images/Book_club_light.png
   static const String imagesBookClubLight = "assets/images/Book_club_light.png";
 
+  /// Assets for imagesBranding
+  /// assets/images/branding.png
+  static const String imagesBranding = "assets/images/branding.png";
+
+  /// Assets for imagesBrandingDark
+  /// assets/images/branding_dark.png
+  static const String imagesBrandingDark = "assets/images/branding_dark.png";
+
   /// Assets for imagesEventlyIcon
   /// assets/images/evently_icon.png
   static const String imagesEventlyIcon = "assets/images/evently_icon.png";
+
+  /// Assets for imagesEventlyIconDark
+  /// assets/images/evently_icon_dark.png
+  static const String imagesEventlyIconDark = "assets/images/evently_icon_dark.png";
 
   /// Assets for imagesExhibitionDark
   /// assets/images/Exhibition_dark.png
@@ -57,6 +69,14 @@ class Assets {
   /// Assets for imagesExhibitionLight
   /// assets/images/Exhibition_light.png
   static const String imagesExhibitionLight = "assets/images/Exhibition_light.png";
+
+  /// Assets for imagesLogo
+  /// assets/images/logo.png
+  static const String imagesLogo = "assets/images/logo.png";
+
+  /// Assets for imagesLogoDark
+  /// assets/images/logo_dark.png
+  static const String imagesLogoDark = "assets/images/logo_dark.png";
 
   /// Assets for imagesMeetingDark
   /// assets/images/Meeting_dark.png

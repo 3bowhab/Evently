@@ -53,4 +53,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get meetings => 'Meetings';
+
+  @override
+  String get letsStart => 'Let\'s Start';
+
+  @override
+  String get theme => 'Theme';
 }

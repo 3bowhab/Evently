@@ -53,4 +53,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get meetings => 'الاجتماعات';
+
+  @override
+  String get letsStart => 'لنبدأ';
+
+  @override
+  String get theme => 'السمة';
 }

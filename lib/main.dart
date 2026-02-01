@@ -2,6 +2,7 @@ import 'package:evently/core/constants/app_routes.dart';
 import 'package:evently/core/theme/app_theme.dart';
 import 'package:evently/providers/language_provider.dart';
 import 'package:evently/providers/theme_provider.dart';
+import 'package:evently/services/prefs_service.dart';
 import 'package:evently/ui/initial_flow/view/setup_view.dart';
 import 'package:evently/ui/main_layout/main_layout_view.dart';
 import 'package:evently/l10n/app_localizations.dart';
@@ -9,20 +10,24 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final bool seenIntro = await PrefsService.hasSeenIntro();
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider<ThemeProvider>(create: (_) => ThemeProvider()),
         ChangeNotifierProvider<LanguageProvider>(create: (_) => LanguageProvider()),
       ],
-      child: const MyApp(),
+      child: MyApp(seenIntro: seenIntro),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final bool seenIntro;
+
+  const MyApp({super.key, required this.seenIntro});
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +62,7 @@ class MyApp extends StatelessWidget {
       themeMode: themeProvider.currentMode,
 
       // Initial route setup
-      initialRoute: AppRoutes.mainLayoutView,
+      initialRoute: seenIntro ? AppRoutes.mainLayoutView : AppRoutes.setupView,
       routes: {
         AppRoutes.setupView: (context) => const SetupView(),
         AppRoutes.mainLayoutView: (context) => const MainLayoutView(),

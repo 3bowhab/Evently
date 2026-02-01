@@ -29,5 +29,9 @@
     "exhibition": "Exhibition",
     "@exhibition": {},
     "meetings": "Meetings",
-    "@meetings": {}
+    "@meetings": {},
+    "letsStart": "Let's Start",
+    "@letsStart": {},
+    "theme": "Theme",
+    "@theme": {}
 }

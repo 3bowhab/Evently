@@ -1,10 +1,17 @@
 import 'package:evently/core/constants/app_images.dart';
 import 'package:evently/core/constants/app_padding.dart';
+import 'package:evently/core/constants/app_routes.dart';
 import 'package:evently/core/extensions/responsive_sized_box_extension.dart';
 import 'package:evently/core/responsive/responsive_config.dart';
 import 'package:evently/l10n/app_localizations.dart';
+import 'package:evently/providers/theme_provider.dart';
+import 'package:evently/services/prefs_service.dart';
+import 'package:evently/ui/initial_flow/widgets/choose_language.dart';
+import 'package:evently/ui/initial_flow/widgets/choose_theme.dart';
+import 'package:evently/ui/initial_flow/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class SetupView extends StatelessWidget {
   const SetupView({super.key});
@@ -12,6 +19,7 @@ class SetupView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ResponsiveConfig.init(context);
+    final themeProvider = Provider.of<ThemeProvider>(context);
 
     return Scaffold(
       body: SafeArea(
@@ -20,7 +28,11 @@ class SetupView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: .stretch,
             children: [
-              Image.asset(Assets.imagesEventlyIcon),
+              Image.asset(
+                themeProvider.currentMode == ThemeMode.dark
+                    ? Assets.imagesEventlyIconDark
+                    : Assets.imagesEventlyIcon,
+              ),
               24.verticalSizedBox,
               SvgPicture.asset(
                 Assets.svgBeingCreative2,
@@ -48,7 +60,37 @@ class SetupView extends StatelessWidget {
                       color: Theme.of(context).colorScheme.tertiary,
                     ),
                   ),
+                  Spacer(),
+                  ChooseLanguage(languageCode: 'en'),
+                  10.horizontalSizedBox,
+                  ChooseLanguage(languageCode: 'ar'),
                 ],
+              ),
+              16.verticalSizedBox,
+              Row(
+                children: [
+                  Text(
+                    AppLocalizations.of(context)!.theme,
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      color: Theme.of(context).colorScheme.tertiary,
+                    ),
+                  ),
+                  Spacer(),
+                  ChooseTheme(themeCode: ThemeMode.light),
+                  10.horizontalSizedBox,
+                  ChooseTheme(themeCode: ThemeMode.dark),
+                ],
+              ),
+              Spacer(),
+              CustomButton(
+                onTap: () async {
+                  await PrefsService.setIntroSeen();
+                  Navigator.pushReplacementNamed(
+                    context,
+                    AppRoutes.mainLayoutView,
+                  );
+                },
+                title: AppLocalizations.of(context)!.letsStart,
               ),
             ],
           ),
