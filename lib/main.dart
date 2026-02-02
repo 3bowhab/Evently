@@ -3,6 +3,7 @@ import 'package:evently/core/theme/app_theme.dart';
 import 'package:evently/providers/language_provider.dart';
 import 'package:evently/providers/theme_provider.dart';
 import 'package:evently/services/prefs_service.dart';
+import 'package:evently/ui/initial_flow/view/onboardings_view.dart';
 import 'package:evently/ui/initial_flow/view/setup_view.dart';
 import 'package:evently/ui/main_layout/main_layout_view.dart';
 import 'package:evently/l10n/app_localizations.dart';
@@ -66,6 +67,7 @@ class MyApp extends StatelessWidget {
       routes: {
         AppRoutes.setupView: (context) => const SetupView(),
         AppRoutes.mainLayoutView: (context) => const MainLayoutView(),
+        AppRoutes.onboardingsView: (context) => const OnboardingsView(),
       },
     );
   }

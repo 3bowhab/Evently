@@ -16,7 +16,8 @@ class AppTheme {
       error: AppColors.red,
       onError: AppColors.white,
       tertiary: AppColors.main,
-      secondaryContainer: AppColors.background
+      secondaryContainer: AppColors.background,
+      primaryFixed: AppColors.disabled,
     ),
     scaffoldBackgroundColor: AppColors.background,
     appBarTheme: const AppBarTheme(
@@ -102,7 +103,8 @@ class AppTheme {
       error: AppColors.red,
       onError: AppColors.white,
       tertiary: AppColors.white,
-      secondaryContainer: AppColors.backgroundDarkMode
+      secondaryContainer: AppColors.backgroundDarkMode,
+      primaryFixed: AppColors.disabled
     ),
     scaffoldBackgroundColor: AppColors.backgroundDarkMode,
     appBarTheme: const AppBarTheme(

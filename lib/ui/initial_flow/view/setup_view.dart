@@ -5,7 +5,6 @@ import 'package:evently/core/extensions/responsive_sized_box_extension.dart';
 import 'package:evently/core/responsive/responsive_config.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/providers/theme_provider.dart';
-import 'package:evently/services/prefs_service.dart';
 import 'package:evently/ui/initial_flow/widgets/choose_language.dart';
 import 'package:evently/ui/initial_flow/widgets/choose_theme.dart';
 import 'package:evently/ui/initial_flow/widgets/custom_button.dart';
@@ -43,12 +42,12 @@ class SetupView extends StatelessWidget {
               ),
               24.verticalSizedBox,
               Text(
-                AppLocalizations.of(context)!.personalizeYourExperience,
+                AppLocalizations.of(context)!.onboarding1title,
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
               8.verticalSizedBox,
               Text(
-                AppLocalizations.of(context)!.chooseYourPreferred,
+                AppLocalizations.of(context)!.onboarding1description,
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               16.verticalSizedBox,
@@ -84,10 +83,14 @@ class SetupView extends StatelessWidget {
               Spacer(),
               CustomButton(
                 onTap: () async {
-                  await PrefsService.setIntroSeen();
+                  // await PrefsService.setIntroSeen();
+                  // Navigator.pushReplacementNamed(
+                  //   context,
+                  //   AppRoutes.mainLayoutView,
+                  // );
                   Navigator.pushReplacementNamed(
                     context,
-                    AppRoutes.mainLayoutView,
+                    AppRoutes.onboardingsView,
                   );
                 },
                 title: AppLocalizations.of(context)!.letsStart,

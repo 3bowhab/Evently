@@ -105,5 +105,17 @@ class Assets {
   /// Assets for svgBeingCreative2
   /// assets/svg/being_creative2.svg
   static const String svgBeingCreative2 = "assets/svg/being_creative2.svg";
+
+  /// Assets for svgOnboarding1
+  /// assets/svg/onboarding1.svg
+  static const String svgOnboarding1 = "assets/svg/onboarding1.svg";
+
+  /// Assets for svgOnboarding2
+  /// assets/svg/onboarding2.svg
+  static const String svgOnboarding2 = "assets/svg/onboarding2.svg";
+
+  /// Assets for svgOnboarding3
+  /// assets/svg/onboarding3.svg
+  static const String svgOnboarding3 = "assets/svg/onboarding3.svg";
 }
 

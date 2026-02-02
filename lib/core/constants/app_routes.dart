@@ -3,4 +3,5 @@ class AppRoutes {
 
   static const String setupView = '/setup_view';
   static const String mainLayoutView = '/main_layout_view';
+  static const String onboardingsView = '/onboardings_view';
 }
