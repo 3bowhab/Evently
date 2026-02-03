@@ -25,5 +25,20 @@
     "theme": "السمة",
     "next": "التالي",
     "getStarted": "ابدأ الآن",
-    "skip": "تخطي"
+    "skip": "تخطي",
+    "loginToYourAccount": "تسجيل الدخول إلى حسابك",
+    "enterYourEmail": "أدخل بريدك الإلكتروني",
+    "enterYourPassword": "أدخل كلمة المرور الخاصة بك",
+    "confirmYourPassword": "تأكيد كلمة المرور الخاصة بك",
+    "forgetPassword": "هل نسيت كلمة المرور؟",
+    "login": "تسجيل الدخول",
+    "dontHaveAnAccount": "ليس لديك حساب؟ ",
+    "signUp": "إنشاء حساب",
+    "or": "أو",
+    "signinwithgoogle": "تسجيل الدخول باستخدام جوجل",
+    "createYourAccount": "إنشاء حسابك",
+    "enterYourName": "أدخل اسمك",
+    "alreadyHaveAnAccount": "هل لديك حساب بالفعل؟ ",
+    "signupwithgoogle": "إنشاء حساب باستخدام جوجل",
+    "resetPassword": "إعادة تعيين كلمة المرور"
 }

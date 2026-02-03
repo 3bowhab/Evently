@@ -36,6 +36,9 @@ class AppTheme {
       headlineSmall: AppTextStyles.headlineSmall.copyWith(
         color: AppColors.mainText,
       ),
+      labelLarge: AppTextStyles.labelLarge.copyWith(
+        color: AppColors.main,
+      ),
       titleLarge: AppTextStyles.titleLarge.copyWith(color: AppColors.mainText),
       titleMedium: AppTextStyles.titleMedium.copyWith(
         color: AppColors.mainText,
