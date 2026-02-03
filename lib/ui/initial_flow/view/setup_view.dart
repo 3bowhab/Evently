@@ -82,12 +82,7 @@ class SetupView extends StatelessWidget {
               ),
               Spacer(),
               CustomButton(
-                onTap: () async {
-                  // await PrefsService.setIntroSeen();
-                  // Navigator.pushReplacementNamed(
-                  //   context,
-                  //   AppRoutes.mainLayoutView,
-                  // );
+                onTap: () {
                   Navigator.pushReplacementNamed(
                     context,
                     AppRoutes.onboardingsView,
