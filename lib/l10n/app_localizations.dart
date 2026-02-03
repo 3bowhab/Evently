@@ -98,23 +98,161 @@ abstract class AppLocalizations {
     Locale('en'),
   ];
 
-  /// No description provided for @personalizeYourExperience.
+  /// No description provided for @onboarding1title.
   ///
   /// In en, this message translates to:
   /// **'Personalize your experience'**
-  String get personalizeYourExperience;
+  String get onboarding1title;
 
-  /// No description provided for @chooseYourPreferred.
+  /// No description provided for @onboarding1description.
   ///
   /// In en, this message translates to:
   /// **'Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style.'**
-  String get chooseYourPreferred;
+  String get onboarding1description;
+
+  /// No description provided for @onboarding2title.
+  ///
+  /// In en, this message translates to:
+  /// **'Find Events That Inspire You'**
+  String get onboarding2title;
+
+  /// No description provided for @onboarding2description.
+  ///
+  /// In en, this message translates to:
+  /// **'Dive into a world of events crafted to fit your unique interests. Whether you\'re into live music, art workshops, professional networking, or simply discovering new experiences, we have something for everyone. Our curated recommendations will help you explore, connect, and make the most of every opportunity around you.'**
+  String get onboarding2description;
+
+  /// No description provided for @onboarding3title.
+  ///
+  /// In en, this message translates to:
+  /// **'Effortless Event Planning'**
+  String get onboarding3title;
+
+  /// No description provided for @onboarding3description.
+  ///
+  /// In en, this message translates to:
+  /// **'Take the hassle out of organizing events with our all-in-one planning tools. From setting up invites and managing RSVPs to scheduling reminders and coordinating details, we’ve got you covered. Plan with ease and focus on what matters – creating an unforgettable experience for you and your guests.'**
+  String get onboarding3description;
+
+  /// No description provided for @onboarding4title.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect with Friends & Share Moments'**
+  String get onboarding4title;
+
+  /// No description provided for @onboarding4description.
+  ///
+  /// In en, this message translates to:
+  /// **'Make every event memorable by sharing the experience with others. Our platform lets you invite friends, keep everyone in the loop, and celebrate moments together. Capture and share the excitement with your network, so you can relive the highlights and cherish the memories.'**
+  String get onboarding4description;
 
   /// No description provided for @language.
   ///
   /// In en, this message translates to:
   /// **'Language'**
   String get language;
+
+  /// No description provided for @home.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get home;
+
+  /// No description provided for @favorite.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorite'**
+  String get favorite;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
+
+  /// No description provided for @darkMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark Mode'**
+  String get darkMode;
+
+  /// No description provided for @logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logout;
+
+  /// No description provided for @welcomeBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome Back!'**
+  String get welcomeBack;
+
+  /// No description provided for @all.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get all;
+
+  /// No description provided for @sport.
+  ///
+  /// In en, this message translates to:
+  /// **'Sports'**
+  String get sport;
+
+  /// No description provided for @birthday.
+  ///
+  /// In en, this message translates to:
+  /// **'Birthday'**
+  String get birthday;
+
+  /// No description provided for @bookClub.
+  ///
+  /// In en, this message translates to:
+  /// **'Book club'**
+  String get bookClub;
+
+  /// No description provided for @exhibition.
+  ///
+  /// In en, this message translates to:
+  /// **'Exhibition'**
+  String get exhibition;
+
+  /// No description provided for @meetings.
+  ///
+  /// In en, this message translates to:
+  /// **'Meetings'**
+  String get meetings;
+
+  /// No description provided for @letsStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s Start'**
+  String get letsStart;
+
+  /// No description provided for @theme.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme'**
+  String get theme;
+
+  /// No description provided for @next.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get next;
+
+  /// No description provided for @getStarted.
+  ///
+  /// In en, this message translates to:
+  /// **'Get Started'**
+  String get getStarted;
+
+  /// No description provided for @skip.
+  ///
+  /// In en, this message translates to:
+  /// **'Skip'**
+  String get skip;
 }
 
 class _AppLocalizationsDelegate
