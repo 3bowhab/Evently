@@ -64,8 +64,8 @@ class MyApp extends StatelessWidget {
       // Theme setup
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      // themeMode: themeProvider.currentMode,
-      themeMode: ThemeMode.dark,
+      themeMode: themeProvider.currentMode,
+      // themeMode: ThemeMode.dark,
 
       // Initial route setup
       initialRoute: seenIntro ? AppRoutes.loginView : AppRoutes.setupView,
