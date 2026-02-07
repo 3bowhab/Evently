@@ -70,6 +70,10 @@ class Assets {
   /// assets/images/Exhibition_light.png
   static const String imagesExhibitionLight = "assets/images/Exhibition_light.png";
 
+  /// Assets for imagesGoogle
+  /// assets/images/google.png
+  static const String imagesGoogle = "assets/images/google.png";
+
   /// Assets for imagesLogo
   /// assets/images/logo.png
   static const String imagesLogo = "assets/images/logo.png";

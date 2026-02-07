@@ -1,4 +1,5 @@
 import 'package:evently/core/constants/app_routes.dart';
+import 'package:evently/core/responsive/responsive_config.dart';
 import 'package:evently/core/theme/app_theme.dart';
 import 'package:evently/providers/language_provider.dart';
 import 'package:evently/providers/theme_provider.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final languageProvider = Provider.of<LanguageProvider>(context);
+    ResponsiveConfig.init(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       
@@ -62,7 +64,8 @@ class MyApp extends StatelessWidget {
       // Theme setup
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      themeMode: themeProvider.currentMode,
+      // themeMode: themeProvider.currentMode,
+      themeMode: ThemeMode.dark,
 
       // Initial route setup
       initialRoute: seenIntro ? AppRoutes.loginView : AppRoutes.setupView,

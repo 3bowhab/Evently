@@ -118,7 +118,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get or => 'Or';
 
   @override
-  String get signinwithgoogle => 'Sign in with Google';
+  String get loginWithGoogle => 'Login with Google';
 
   @override
   String get createYourAccount => 'Create your account';

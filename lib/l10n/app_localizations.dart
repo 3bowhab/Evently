@@ -308,11 +308,11 @@ abstract class AppLocalizations {
   /// **'Or'**
   String get or;
 
-  /// No description provided for @signinwithgoogle.
+  /// No description provided for @loginWithGoogle.
   ///
   /// In en, this message translates to:
-  /// **'Sign in with Google'**
-  String get signinwithgoogle;
+  /// **'Login with Google'**
+  String get loginWithGoogle;
 
   /// No description provided for @createYourAccount.
   ///
