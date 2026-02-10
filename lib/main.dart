@@ -8,6 +8,7 @@ import 'package:evently/ui/auth_flow/view/login_view.dart';
 import 'package:evently/ui/auth_flow/view/register_view.dart';
 import 'package:evently/ui/initial_flow/view/onboardings_view.dart';
 import 'package:evently/ui/initial_flow/view/setup_view.dart';
+import 'package:evently/ui/main_layout/event/view/add_event.dart';
 import 'package:evently/ui/main_layout/main_layout_view.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,6 @@ class MyApp extends StatelessWidget {
     ResponsiveConfig.init(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      
 
       // Localization setup
       localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -68,13 +68,14 @@ class MyApp extends StatelessWidget {
       // themeMode: ThemeMode.dark,
 
       // Initial route setup
-      initialRoute: seenIntro ? AppRoutes.loginView : AppRoutes.setupView,
+      initialRoute: seenIntro ? AppRoutes.registerView : AppRoutes.setupView,
       routes: {
         AppRoutes.setupView: (context) => const SetupView(),
         AppRoutes.mainLayoutView: (context) => const MainLayoutView(),
         AppRoutes.onboardingsView: (context) => const OnboardingsView(),
         AppRoutes.loginView: (context) => const LoginView(),
         AppRoutes.registerView: (context) => const RegisterView(),
+        AppRoutes.addEventView: (context) => const AddEvent(),
       },
     );
   }

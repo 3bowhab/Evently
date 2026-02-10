@@ -1,5 +1,6 @@
 import 'package:evently/core/constants/app_images.dart';
 import 'package:evently/core/constants/app_padding.dart';
+import 'package:evently/core/constants/app_routes.dart';
 import 'package:evently/core/responsive/responsive_config.dart';
 import 'package:evently/ui/main_layout/tabs/favorite/favorite_tab.dart';
 import 'package:evently/ui/main_layout/tabs/home/home_tab.dart';
@@ -24,7 +25,9 @@ class _MainLayoutViewState extends State<MainLayoutView> {
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, AppRoutes.addEventView);
+        },
         child: const Icon(Icons.add, size: 32),
       ),
 
