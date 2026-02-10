@@ -49,5 +49,6 @@
     "title": "العنوان",
     "description": "الوصف",
     "chooseDate": "اختر التاريخ",
-    "chooseTime": "اختر الوقت"
+    "chooseTime": "اختر الوقت",
+    "searchForEvent": "ابحث عن فعالية"
 }

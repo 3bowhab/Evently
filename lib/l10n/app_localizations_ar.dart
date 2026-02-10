@@ -161,4 +161,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get chooseTime => 'اختر الوقت';
+
+  @override
+  String get searchForEvent => 'ابحث عن فعالية';
 }

@@ -161,4 +161,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get chooseTime => 'Choose Time';
+
+  @override
+  String get searchForEvent => 'Search for event';
 }
