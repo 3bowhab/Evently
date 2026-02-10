@@ -1,3 +1,4 @@
+import 'package:evently/core/extensions/responsive_size_extension.dart';
 import 'package:evently/core/theme/app_colors.dart';
 import 'package:evently/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ class AppTheme {
       backgroundColor: AppColors.background,
       elevation: 0,
       centerTitle: true,
+      scrolledUnderElevation: 0,
       surfaceTintColor: Colors.transparent,
     ),
     textTheme: TextTheme(
@@ -36,6 +38,9 @@ class AppTheme {
       headlineSmall: AppTextStyles.headlineSmall.copyWith(
         color: AppColors.mainText,
       ),
+      labelLarge: AppTextStyles.labelLarge.copyWith(
+        color: AppColors.main,
+      ),
       titleLarge: AppTextStyles.titleLarge.copyWith(color: AppColors.mainText),
       titleMedium: AppTextStyles.titleMedium.copyWith(
         color: AppColors.mainText,
@@ -44,6 +49,47 @@ class AppTheme {
       bodyLarge: AppTextStyles.bodyLarge.copyWith(color: AppColors.secText),
       bodyMedium: AppTextStyles.bodyMedium.copyWith(color: AppColors.secText),
       bodySmall: AppTextStyles.bodySmall.copyWith(color: AppColors.mainText),
+    ),
+    inputDecorationTheme: InputDecorationThemeData(
+      filled: true,
+      fillColor: AppColors.white,
+      prefixIconColor: AppColors.disabled,
+      suffixIconColor: AppColors.disabled,
+      labelStyle: AppTextStyles.bodyMedium.copyWith(color: AppColors.secText),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(
+          color: AppColors.stroke,
+        ),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(
+          color: AppColors.main,
+        ),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(
+          color: AppColors.red,
+        ),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(
+          color: AppColors.red,
+        ),
+      ),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColors.main,
+        foregroundColor: AppColors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        minimumSize: Size(double.infinity, 48.height),
+      ),
     ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: AppColors.main,
@@ -110,6 +156,7 @@ class AppTheme {
     appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.backgroundDarkMode,
       elevation: 0,
+      scrolledUnderElevation: 0,
       centerTitle: true,
     ),
     textTheme: TextTheme(
@@ -125,6 +172,7 @@ class AppTheme {
       titleLarge: AppTextStyles.titleLarge.copyWith(color: AppColors.white),
       titleMedium: AppTextStyles.titleMedium.copyWith(color: AppColors.white),
       titleSmall: AppTextStyles.titleSmall.copyWith(color: AppColors.white),
+      labelLarge: AppTextStyles.labelLarge.copyWith(color: AppColors.white),
       bodyLarge: AppTextStyles.bodyLarge.copyWith(
         color: AppColors.secTextDarkMode,
       ),
@@ -133,6 +181,37 @@ class AppTheme {
       ),
       bodySmall: AppTextStyles.bodySmall.copyWith(
         color: AppColors.secTextDarkMode,
+      ),
+    ),
+    inputDecorationTheme: InputDecorationThemeData(
+      filled: true,
+      fillColor: AppColors.inputs,
+      prefixIconColor: AppColors.disabled,
+      suffixIconColor: AppColors.disabled,
+      labelStyle: AppTextStyles.bodyMedium.copyWith(color: AppColors.secTextDarkMode),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(color: AppColors.strokeDarkMode),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(color: AppColors.strokeDarkMode, width: 2),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(color: AppColors.red),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(color: AppColors.red),
+      ),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColors.mainDarkMode,
+        foregroundColor: AppColors.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        minimumSize: Size(double.infinity, 48.height),
       ),
     ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(

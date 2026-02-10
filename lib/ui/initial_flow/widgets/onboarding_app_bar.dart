@@ -34,7 +34,7 @@ class OnboardingAppBar extends StatelessWidget {
             themeProvider.currentMode == ThemeMode.dark
                 ? Assets.imagesEventlyIconDark
                 : Assets.imagesEventlyIcon,
-            height: 28,
+            height: 28.height,
           ),
     
           currentIndex > 0

@@ -2,7 +2,7 @@ import 'package:evently/services/prefs_service.dart';
 import 'package:flutter/material.dart';
 
 class ThemeProvider extends ChangeNotifier {
-  ThemeMode currentMode = ThemeMode.light;
+  ThemeMode currentMode = ThemeMode.system;
 
   ThemeProvider() {
     loadTheme();   
