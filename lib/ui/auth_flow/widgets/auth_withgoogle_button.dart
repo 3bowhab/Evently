@@ -1,5 +1,5 @@
 import 'package:evently/core/constants/app_images.dart';
-import 'package:evently/ui/auth_flow/widgets/custom_auth_button.dart';
+import 'package:evently/ui/auth_flow/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
 class AuthWithgoogleButton extends StatelessWidget {
@@ -13,9 +13,10 @@ class AuthWithgoogleButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomAuthButton(
+    return CustomButton(
       onPressed: onPressed,
-      label: Text(
+      isGoogleButton: true,
+      labelWidget: Text(
         label,
         style: Theme.of(context).textTheme.titleLarge!.copyWith(
           color: Theme.of(context).colorScheme.primary,

@@ -4,12 +4,11 @@ import 'package:evently/core/constants/app_routes.dart';
 import 'package:evently/core/extensions/responsive_size_extension.dart';
 import 'package:evently/core/extensions/responsive_sized_box_extension.dart';
 import 'package:evently/core/responsive/responsive_config.dart';
-import 'package:evently/core/theme/app_colors.dart';
 import 'package:evently/core/utils/app_utils.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/ui/auth_flow/widgets/auth_withgoogle_button.dart';
 import 'package:evently/ui/auth_flow/widgets/create_or_dont_have_account.dart';
-import 'package:evently/ui/auth_flow/widgets/custom_auth_button.dart';
+import 'package:evently/ui/auth_flow/widgets/custom_button.dart';
 import 'package:evently/ui/auth_flow/widgets/custom_text_form_field.dart';
 import 'package:evently/ui/auth_flow/widgets/or_row.dart';
 import 'package:flutter/material.dart';
@@ -107,19 +106,14 @@ class _RegisterViewState extends State<RegisterView> {
       
                 // Register button
                 50.verticalSizedBox,
-                CustomAuthButton(
+                CustomButton(
                   onPressed: () {
                     Navigator.pushReplacementNamed(
                       context,
                       AppRoutes.loginView,
                     );
                   },
-                  label: Text(
-                    AppLocalizations.of(context)!.signUp,
-                    style: Theme.of(
-                      context,
-                    ).textTheme.titleLarge!.copyWith(color: AppColors.white),
-                  ),
+                  label: AppLocalizations.of(context)!.signUp,
                 ),
       
                 // sign up text

@@ -4,9 +4,9 @@ import 'package:evently/core/extensions/responsive_sized_box_extension.dart';
 import 'package:evently/core/utils/app_utils.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/models/event_type.dart';
-import 'package:evently/ui/auth_flow/widgets/custom_auth_button.dart';
+import 'package:evently/ui/auth_flow/widgets/custom_button.dart';
 import 'package:evently/ui/auth_flow/widgets/custom_text_form_field.dart';
-import 'package:evently/ui/initial_flow/widgets/app_bar_back_button.dart';
+import 'package:evently/ui/main_layout/event/widgets/app_bar_title.dart';
 import 'package:evently/ui/main_layout/event/widgets/date_and_time_widget.dart';
 import 'package:evently/ui/main_layout/event/widgets/event_image.dart';
 import 'package:evently/ui/main_layout/event/widgets/event_types_list_view.dart';
@@ -41,27 +41,14 @@ class _AddEventState extends State<AddEvent> {
   @override
   Widget build(BuildContext context) {
     final eventTabs = EventType.getEventTypes(context).sublist(1);
-    String imgPath = eventTabs[selectedIndex].imagePath.changeImageTheme(context);
+    String imgPath = eventTabs[selectedIndex].imagePath.changeImageTheme(
+      context,
+    );
 
     return GestureDetector(
       onTap: () => AppUtils.hideKeyboard(context),
       child: Scaffold(
-        appBar: AppBar(
-          leading: Row(
-            mainAxisAlignment: .end,
-            children: [
-              AppBarBackButton(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ],
-          ),
-          title: Text(
-            AppLocalizations.of(context)!.addEvent,
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
-        ),
+        appBar: AppBarTitle(title: AppLocalizations.of(context)!.addEvent),
         body: Padding(
           padding: AppPadding.view,
           child: SingleChildScrollView(
@@ -79,7 +66,8 @@ class _AddEventState extends State<AddEvent> {
                     onTap: (index) {
                       setState(() {
                         selectedIndex = index;
-                        imgPath = eventTabs[selectedIndex].imagePath.changeImageTheme(context);
+                        imgPath = eventTabs[selectedIndex].imagePath
+                            .changeImageTheme(context);
                       });
                     },
                   ),
@@ -126,14 +114,9 @@ class _AddEventState extends State<AddEvent> {
 
                   // Add event button
                   30.verticalSizedBox,
-                  CustomAuthButton(
+                  CustomButton(
                     onPressed: () {},
-                    label: Text(
-                      AppLocalizations.of(context)!.addEvent,
-                      style: Theme.of(
-                        context,
-                      ).textTheme.titleLarge?.copyWith(color: Colors.white),
-                    ),
+                    label: AppLocalizations.of(context)!.addEvent,
                   ),
                   10.verticalSizedBox,
                 ],

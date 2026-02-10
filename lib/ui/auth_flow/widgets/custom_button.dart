@@ -1,24 +1,36 @@
+import 'package:evently/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
-class CustomAuthButton extends StatelessWidget {
+class CustomButton extends StatelessWidget {
   final VoidCallback onPressed;
-  final Widget label;
+  final String? label;
+  final bool isGoogleButton;
+  final Widget? labelWidget;
   final Widget? icon;
   final Color? backgroundColor;
   final Color? borderSideColor;
-  const CustomAuthButton({
+  const CustomButton({
     super.key,
     required this.onPressed,
-    required this.label,
+    this.label,
     this.icon,
     this.backgroundColor,
     this.borderSideColor,
+    this.isGoogleButton = false, 
+    this.labelWidget,
   });
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
       onPressed: onPressed,
-      label: label,
+      label: isGoogleButton
+          ? labelWidget!
+          : Text(
+              label!,
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge!.copyWith(color: AppColors.white),
+            ),
       icon: icon ?? SizedBox.shrink(),
       style: ElevatedButton.styleFrom(
         backgroundColor: backgroundColor,

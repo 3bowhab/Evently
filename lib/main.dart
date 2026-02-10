@@ -4,6 +4,7 @@ import 'package:evently/core/theme/app_theme.dart';
 import 'package:evently/providers/language_provider.dart';
 import 'package:evently/providers/theme_provider.dart';
 import 'package:evently/services/prefs_service.dart';
+import 'package:evently/ui/auth_flow/view/forget_password_view.dart';
 import 'package:evently/ui/auth_flow/view/login_view.dart';
 import 'package:evently/ui/auth_flow/view/register_view.dart';
 import 'package:evently/ui/initial_flow/view/onboardings_view.dart';
@@ -75,6 +76,7 @@ class MyApp extends StatelessWidget {
         AppRoutes.onboardingsView: (context) => const OnboardingsView(),
         AppRoutes.loginView: (context) => const LoginView(),
         AppRoutes.registerView: (context) => const RegisterView(),
+        AppRoutes.forgetPasswordView: (context) => const ForgetPasswordView(),
         AppRoutes.addEventView: (context) => const AddEvent(),
       },
     );
