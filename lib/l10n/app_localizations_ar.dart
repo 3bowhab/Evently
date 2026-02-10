@@ -134,4 +134,31 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get resetPassword => 'إعادة تعيين كلمة المرور';
+
+  @override
+  String get addEvent => 'إضافة فعالية';
+
+  @override
+  String get title => 'العنوان';
+
+  @override
+  String get eventTitle => 'عنوان الفعالية';
+
+  @override
+  String get description => 'الوصف';
+
+  @override
+  String get eventDescription => 'وصف الفعالية';
+
+  @override
+  String get eventDate => 'تاريخ الفعالية';
+
+  @override
+  String get eventTime => 'وقت الفعالية';
+
+  @override
+  String get chooseDate => 'اختر التاريخ';
+
+  @override
+  String get chooseTime => 'اختر الوقت';
 }

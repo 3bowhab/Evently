@@ -134,7 +134,6 @@ class AppTheme {
       }),
     ),
   );
-
   // Dark Theme
   static ThemeData get darkTheme => ThemeData(
     useMaterial3: true,

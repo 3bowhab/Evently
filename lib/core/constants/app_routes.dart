@@ -6,4 +6,5 @@ class AppRoutes {
   static const String onboardingsView = '/onboardings_view';
   static const String loginView = '/login_view';
   static const String registerView = '/register_view';
+  static const String addEventView = '/add-event';
 }

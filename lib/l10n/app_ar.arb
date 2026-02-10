@@ -40,5 +40,14 @@
     "enterYourName": "أدخل اسمك",
     "alreadyHaveAnAccount": "هل لديك حساب بالفعل؟ ",
     "signupwithgoogle": "إنشاء حساب باستخدام جوجل",
-    "resetPassword": "إعادة تعيين كلمة المرور"
+    "resetPassword": "إعادة تعيين كلمة المرور",
+    "addEvent": "إضافة فعالية",
+    "eventTitle": "عنوان الفعالية",
+    "eventDescription": "وصف الفعالية",
+    "eventDate": "تاريخ الفعالية",
+    "eventTime": "وقت الفعالية",
+    "title": "العنوان",
+    "description": "الوصف",
+    "chooseDate": "اختر التاريخ",
+    "chooseTime": "اختر الوقت"
 }
