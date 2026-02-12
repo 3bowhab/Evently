@@ -99,5 +99,7 @@
     "chooseDate": "Choose Date",
     "@chooseDate": {},
     "chooseTime": "Choose Time",
-    "@chooseTime": {}
+    "@chooseTime": {},
+    "searchForEvent": "Search for event",
+    "@searchForEvent": {}
 }

@@ -5,9 +5,9 @@ import 'package:evently/core/extensions/responsive_sized_box_extension.dart';
 import 'package:evently/core/responsive/responsive_config.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/providers/theme_provider.dart';
+import 'package:evently/ui/auth_flow/widgets/custom_button.dart';
 import 'package:evently/ui/initial_flow/widgets/choose_language.dart';
 import 'package:evently/ui/initial_flow/widgets/choose_theme.dart';
-import 'package:evently/ui/initial_flow/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -82,13 +82,13 @@ class SetupView extends StatelessWidget {
               ),
               Spacer(),
               CustomButton(
-                onTap: () {
+                onPressed: () {
                   Navigator.pushReplacementNamed(
                     context,
                     AppRoutes.onboardingsView,
                   );
                 },
-                title: AppLocalizations.of(context)!.letsStart,
+                label: AppLocalizations.of(context)!.letsStart,
               ),
             ],
           ),

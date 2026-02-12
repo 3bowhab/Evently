@@ -23,46 +23,49 @@ class _MainLayoutViewState extends State<MainLayoutView> {
   Widget build(BuildContext context) {
     ResponsiveConfig.init(context);
 
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, AppRoutes.addEventView);
-        },
-        child: const Icon(Icons.add, size: 32),
-      ),
-
-      bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(32)),
-        child: NavigationBar(
-          selectedIndex: currentIndex,
-          onDestinationSelected: (value) {
-            setState(() {
-              currentIndex = value;
-            });
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.pushNamed(context, AppRoutes.addEventView);
           },
-          destinations: [
-            NavigationDestination(
-              icon: ImageIcon(AssetImage(Assets.iconsHomeUnselected)),
-              selectedIcon: ImageIcon(AssetImage(Assets.iconsHomeSelected)),
-              label: AppLocalizations.of(context)!.home,
-            ),
-
-            NavigationDestination(
-              icon: ImageIcon(AssetImage(Assets.iconsHeartUnselected)),
-              selectedIcon: ImageIcon(AssetImage(Assets.iconsHeartSelected)),
-              label: AppLocalizations.of(context)!.favorite,
-            ),
-            
-            NavigationDestination(
-              icon: ImageIcon(AssetImage(Assets.iconsUserUnselected)),
-              selectedIcon: ImageIcon(AssetImage(Assets.iconsUserSelected)),
-              label: AppLocalizations.of(context)!.profile,
-            ),
-          ],
+          child: const Icon(Icons.add, size: 32),
         ),
-      ),
-      body: SafeArea(
-        child: Padding(padding: AppPadding.view, child: tabs[currentIndex]),
+      
+        bottomNavigationBar: ClipRRect(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(32)),
+          child: NavigationBar(
+            selectedIndex: currentIndex,
+            onDestinationSelected: (value) {
+              setState(() {
+                currentIndex = value;
+              });
+            },
+            destinations: [
+              NavigationDestination(
+                icon: ImageIcon(AssetImage(Assets.iconsHomeUnselected)),
+                selectedIcon: ImageIcon(AssetImage(Assets.iconsHomeSelected)),
+                label: AppLocalizations.of(context)!.home,
+              ),
+      
+              NavigationDestination(
+                icon: ImageIcon(AssetImage(Assets.iconsHeartUnselected)),
+                selectedIcon: ImageIcon(AssetImage(Assets.iconsHeartSelected)),
+                label: AppLocalizations.of(context)!.favorite,
+              ),
+              
+              NavigationDestination(
+                icon: ImageIcon(AssetImage(Assets.iconsUserUnselected)),
+                selectedIcon: ImageIcon(AssetImage(Assets.iconsUserSelected)),
+                label: AppLocalizations.of(context)!.profile,
+              ),
+            ],
+          ),
+        ),
+        body: SafeArea(
+          child: Padding(padding: AppPadding.view, child: tabs[currentIndex]),
+        ),
       ),
     );
   }
