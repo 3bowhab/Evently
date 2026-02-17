@@ -1,7 +1,7 @@
 import 'package:evently/core/constants/app_padding.dart';
 import 'package:evently/core/extensions/image_changer_theme_extension.dart';
 import 'package:evently/core/extensions/responsive_sized_box_extension.dart';
-import 'package:evently/core/utils/app_utils.dart';
+import 'package:evently/core/utils/focus_util.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/models/event_type.dart';
 import 'package:evently/ui/auth_flow/widgets/custom_button.dart';
@@ -46,7 +46,7 @@ class _AddEventState extends State<AddEvent> {
     );
 
     return GestureDetector(
-      onTap: () => AppUtils.hideKeyboard(context),
+      onTap: () => FocusUtil.hideKeyboard(context),
       child: Scaffold(
         appBar: AppBarTitle(title: AppLocalizations.of(context)!.addEvent),
         body: Padding(
