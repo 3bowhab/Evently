@@ -5,8 +5,13 @@ class DateAndTimeWidget extends StatelessWidget {
   final IconData icon;
   final String label;
   final String buttonText;
+  final VoidCallback? onTap;
   const DateAndTimeWidget({
-    super.key, required this.icon, required this.label, required this.buttonText,
+    super.key,
+    required this.icon,
+    required this.label,
+    required this.buttonText,
+    this.onTap,
   });
 
   @override
@@ -15,13 +20,10 @@ class DateAndTimeWidget extends StatelessWidget {
       children: [
         Icon(icon, size: 25, color: Theme.of(context).colorScheme.primary),
         8.horizontalSizedBox,
-        Text(
-          label,
-          style: Theme.of(context).textTheme.titleMedium,
-        ),
+        Text(label, style: Theme.of(context).textTheme.titleMedium),
         Spacer(),
         TextButton(
-          onPressed: () {},
+          onPressed: onTap,
           child: Text(
             buttonText,
             style: Theme.of(context).textTheme.bodyMedium!.copyWith(

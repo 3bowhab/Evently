@@ -12,6 +12,8 @@ import 'package:evently/core/utils/focus_util.dart';
 import 'package:evently/core/utils/toast_utils.dart';
 import 'package:evently/core/utils/validations.dart';
 import 'package:evently/l10n/app_localizations.dart';
+import 'package:evently/models/user.dart';
+import 'package:evently/providers/user_provider.dart';
 import 'package:evently/ui/auth_flow/widgets/auth_withgoogle_button.dart';
 import 'package:evently/ui/auth_flow/widgets/create_or_dont_have_account.dart';
 import 'package:evently/ui/auth_flow/widgets/custom_button.dart';
@@ -19,6 +21,7 @@ import 'package:evently/ui/auth_flow/widgets/custom_text_form_field.dart';
 import 'package:evently/ui/auth_flow/widgets/or_row.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -135,9 +138,18 @@ class _LoginViewState extends State<LoginView> {
                                 email: _emailController.text,
                                 password: _passwordController.text,
                               );
+                          final userCredential = credential.user;
+                          final newUser = userCredential != null
+                              ? UserModel(
+                                  uid: userCredential.uid,
+                                  email: userCredential.email ?? '',
+                                  name: userCredential.displayName ?? '',
+                                )
+                              : null;
 
                           Navigator.pop(context);
-                          ToastUtils.showToast(
+                          context.read<UserProvider>().updateUser(newUser!);
+                          ToastUtils.showSuccessToast(
                             AppLocalizations.of(context)!.loggedInSuccessfully,
                             context,
                           );

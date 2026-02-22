@@ -1,8 +1,10 @@
 import 'package:evently/core/constants/app_routes.dart';
 import 'package:evently/core/responsive/responsive_config.dart';
 import 'package:evently/core/theme/app_theme.dart';
+import 'package:evently/providers/events_provider.dart';
 import 'package:evently/providers/language_provider.dart';
 import 'package:evently/providers/theme_provider.dart';
+import 'package:evently/providers/user_provider.dart';
 import 'package:evently/services/prefs_service.dart';
 import 'package:evently/ui/auth_flow/view/forget_password_view.dart';
 import 'package:evently/ui/auth_flow/view/login_view.dart';
@@ -26,7 +28,11 @@ void main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider<ThemeProvider>(create: (_) => ThemeProvider()),
-        ChangeNotifierProvider<LanguageProvider>(create: (_) => LanguageProvider()),
+        ChangeNotifierProvider<LanguageProvider>(
+          create: (_) => LanguageProvider(),
+        ),
+        ChangeNotifierProvider<UserProvider>(create: (_) => UserProvider()),
+        ChangeNotifierProvider<EventsProvider>(create: (_) => EventsProvider()),
       ],
       child: MyApp(seenIntro: seenIntro),
     ),

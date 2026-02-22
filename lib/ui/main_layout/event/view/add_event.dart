@@ -2,8 +2,12 @@ import 'package:evently/core/constants/app_padding.dart';
 import 'package:evently/core/extensions/image_changer_theme_extension.dart';
 import 'package:evently/core/extensions/responsive_sized_box_extension.dart';
 import 'package:evently/core/utils/focus_util.dart';
+import 'package:evently/core/utils/toast_utils.dart';
 import 'package:evently/l10n/app_localizations.dart';
+import 'package:evently/models/event.dart';
 import 'package:evently/models/event_type.dart';
+import 'package:evently/providers/user_provider.dart';
+import 'package:evently/services/firebase_service.dart';
 import 'package:evently/ui/auth_flow/widgets/custom_button.dart';
 import 'package:evently/ui/auth_flow/widgets/custom_text_form_field.dart';
 import 'package:evently/ui/main_layout/event/widgets/app_bar_title.dart';
@@ -11,6 +15,8 @@ import 'package:evently/ui/main_layout/event/widgets/date_and_time_widget.dart';
 import 'package:evently/ui/main_layout/event/widgets/event_image.dart';
 import 'package:evently/ui/main_layout/event/widgets/event_types_list_view.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class AddEvent extends StatefulWidget {
   const AddEvent({super.key});
@@ -21,6 +27,10 @@ class AddEvent extends StatefulWidget {
 
 class _AddEventState extends State<AddEvent> {
   int selectedIndex = 0;
+  DateTime? selectedDate;
+  String? formatedDate;
+  TimeOfDay? selectedTime;
+  String? formatedTime;
   late final TextEditingController titleController;
   late final TextEditingController descriptionController;
 
@@ -41,6 +51,7 @@ class _AddEventState extends State<AddEvent> {
   @override
   Widget build(BuildContext context) {
     final eventTabs = EventType.getEventTypes(context).sublist(1);
+    final userProvider = context.read<UserProvider>();
     String imgPath = eventTabs[selectedIndex].imagePath.changeImageTheme(
       context,
     );
@@ -102,20 +113,52 @@ class _AddEventState extends State<AddEvent> {
                   // event date and time picker
                   10.verticalSizedBox,
                   DateAndTimeWidget(
+                    onTap: chooseDate,
                     icon: Icons.calendar_month_outlined,
                     label: AppLocalizations.of(context)!.eventDate,
-                    buttonText: AppLocalizations.of(context)!.chooseDate,
+                    buttonText: selectedDate == null
+                        ? AppLocalizations.of(context)!.chooseDate
+                        : formatedDate ?? '',
                   ),
                   DateAndTimeWidget(
+                    onTap: chooseTime,
                     icon: Icons.access_time_outlined,
                     label: AppLocalizations.of(context)!.eventTime,
-                    buttonText: AppLocalizations.of(context)!.chooseTime,
+                    buttonText: selectedTime == null
+                        ? AppLocalizations.of(context)!.chooseTime
+                        : formatedTime ?? '',
                   ),
 
                   // Add event button
                   30.verticalSizedBox,
                   CustomButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Event event = Event(
+                        // id: DateTime.now().millisecondsSinceEpoch.toString(),
+                        eventType: eventTabs[selectedIndex].name,
+                        dateTime: selectedDate ?? DateTime.now(),
+                        title: titleController.text,
+                        description: descriptionController.text,
+                        imagePath: eventTabs[selectedIndex].imagePath,
+                      );
+                      FirebaseService.addEventToFirestore(
+                            event,
+                            userProvider.currentUser!.uid,
+                          )
+                          .then((_) {
+                            ToastUtils.showSuccessToast(
+                              'Event added successfully!',
+                              context,
+                            );
+                            Navigator.pop(context);
+                          })
+                          .catchError((error) {
+                            ToastUtils.showErrorToast(
+                              'Failed to add event: $error',
+                              context,
+                            );
+                          });
+                    },
                     label: AppLocalizations.of(context)!.addEvent,
                   ),
                   10.verticalSizedBox,
@@ -126,5 +169,33 @@ class _AddEventState extends State<AddEvent> {
         ),
       ),
     );
+  }
+
+  Future<void> chooseDate() async {
+    DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime.now(),
+      lastDate: DateTime.now().add(Duration(days: 730)),
+    );
+    if (picked != null) {
+      setState(() {
+        selectedDate = picked;
+        formatedDate = DateFormat('yMd').format(selectedDate!);
+      });
+    }
+  }
+
+  Future<void> chooseTime() async {
+    TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    );
+    if (picked != null) {
+      setState(() {
+        selectedTime = picked;
+        formatedTime = '${selectedTime!.hour}:${selectedTime!.minute}';
+      });
+    }
   }
 }

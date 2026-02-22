@@ -12,6 +12,8 @@ import 'package:evently/core/utils/dialog_utils.dart';
 import 'package:evently/core/utils/toast_utils.dart';
 import 'package:evently/core/utils/validations.dart';
 import 'package:evently/l10n/app_localizations.dart';
+import 'package:evently/models/user.dart';
+import 'package:evently/services/firebase_service.dart';
 import 'package:evently/ui/auth_flow/widgets/auth_withgoogle_button.dart';
 import 'package:evently/ui/auth_flow/widgets/create_or_dont_have_account.dart';
 import 'package:evently/ui/auth_flow/widgets/custom_button.dart';
@@ -136,8 +138,15 @@ class _RegisterViewState extends State<RegisterView> {
                                 password: _passwordController.text,
                               );
 
+                          await FirebaseService.addUserToFirestore(
+                            UserModel(
+                              name: _nameController.text,
+                              email: _emailController.text,
+                              uid: credential.user?.uid ?? '',
+                            ),
+                          );
                           Navigator.pop(context);
-                          ToastUtils.showToast(
+                          ToastUtils.showSuccessToast(
                             AppLocalizations.of(
                               context,
                             )!.accountCreatedSuccessfully,

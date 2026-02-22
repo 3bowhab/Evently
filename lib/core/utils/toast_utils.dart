@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:toastification/toastification.dart';
 
 class ToastUtils {
-  static void showToast(String message, BuildContext context) {
+  static void showSuccessToast(String message, BuildContext context) {
     toastification.show(
       context: context,
       type: ToastificationType.success,

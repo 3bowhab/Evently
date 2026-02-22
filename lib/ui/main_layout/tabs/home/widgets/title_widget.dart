@@ -1,6 +1,9 @@
 import 'package:evently/core/extensions/responsive_padding_extension.dart';
 import 'package:evently/models/event.dart';
+import 'package:evently/providers/events_provider.dart';
+import 'package:evently/providers/user_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class TitleWidget extends StatefulWidget {
   final Event event;
@@ -34,6 +37,11 @@ class _TitleWidgetState extends State<TitleWidget> {
             onPressed: () {
               setState(() {
                 widget.event.isFavorite = !widget.event.isFavorite;
+                context.read<EventsProvider>().updateFavoriteEvents(
+                      context.read<UserProvider>().currentUser?.uid ?? '',
+                      widget.event.id,
+                      widget.event.isFavorite,
+                    );
               });
             },
             icon: widget.event.isFavorite

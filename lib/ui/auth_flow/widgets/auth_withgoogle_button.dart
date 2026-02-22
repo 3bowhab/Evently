@@ -2,7 +2,7 @@ import 'package:evently/core/constants/app_images.dart';
 import 'package:evently/core/constants/app_routes.dart';
 import 'package:evently/core/utils/dialog_utils.dart';
 import 'package:evently/core/utils/toast_utils.dart';
-import 'package:evently/services/firebase_auth_service.dart';
+import 'package:evently/services/firebase_service.dart';
 import 'package:evently/ui/auth_flow/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +22,7 @@ class AuthWithgoogleButton extends StatelessWidget {
         try {
           DialogUtils.showLoadingDialog(context);
 
-          final credential = await FirebaseAuthService().signInWithGoogle();
+          final credential = await FirebaseService().signInWithGoogle();
 
           Navigator.pop(context);
 
@@ -30,7 +30,7 @@ class AuthWithgoogleButton extends StatelessWidget {
             return;
           }
 
-          ToastUtils.showToast(
+          ToastUtils.showSuccessToast(
             toastMessage,
             context,
           );
@@ -38,6 +38,9 @@ class AuthWithgoogleButton extends StatelessWidget {
           Navigator.pushReplacementNamed(context, AppRoutes.mainLayoutView);
         } catch (e) {
           Navigator.pop(context);
+          if (e.toString().contains('canceled')) {
+            return;
+          }
           ToastUtils.showErrorToast(e.toString(), context);
           print("Error is: $e");
         }
