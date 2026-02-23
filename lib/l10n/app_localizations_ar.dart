@@ -206,6 +206,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get loggedInSuccessfully => 'تم تسجيل الدخول بنجاح';
 
   @override
+  String get loggedOutSuccessfully => 'تم تسجيل الخروج بنجاح';
+
+  @override
   String get invalidEmailOrPassword => 'بريد إلكتروني أو كلمة مرور غير صحيحة';
 
   @override
@@ -248,4 +251,16 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get anErrorOccurredPleaseTryAgain =>
       'حدث خطأ ما. يرجى المحاولة مرة أخرى';
+
+  @override
+  String get confirmLogout => 'تأكيد تسجيل الخروج';
+
+  @override
+  String get areYouSureYouWantToLogout => 'هل أنت متأكد أنك تريد تسجيل الخروج؟';
+
+  @override
+  String get cancel => 'إلغاء';
+
+  @override
+  String get confirm => 'تأكيد';
 }

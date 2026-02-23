@@ -49,7 +49,7 @@ class _FavoriteTabState extends State<FavoriteTab> {
           ),
           titleSpacing: 0,
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(56.height),
+            preferredSize: Size.fromHeight(50.height),
             child: tabBar(eventTab, context),
           ),
         ),
@@ -73,6 +73,7 @@ class _FavoriteTabState extends State<FavoriteTab> {
       tabAlignment: TabAlignment.start,
       isScrollable: true,
       dividerHeight: 0,
+      labelPadding: EdgeInsets.zero,
       onTap: (index) {
         context.read<EventsProvider>().changeSelectedEventTypeIndex(index);
         if (index == 0) {

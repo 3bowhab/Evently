@@ -38,10 +38,10 @@ class _TitleWidgetState extends State<TitleWidget> {
               setState(() {
                 widget.event.isFavorite = !widget.event.isFavorite;
                 context.read<EventsProvider>().updateFavoriteEvents(
-                      context.read<UserProvider>().currentUser?.uid ?? '',
-                      widget.event.id,
-                      widget.event.isFavorite,
-                    );
+                  context.read<UserProvider>().currentUser?.uid ?? '',
+                  widget.event.id,
+                  widget.event.isFavorite,
+                );
               });
             },
             icon: widget.event.isFavorite

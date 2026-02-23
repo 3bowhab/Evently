@@ -1,3 +1,4 @@
+import 'package:evently/core/extensions/responsive_size_extension.dart';
 import 'package:evently/models/event_type.dart';
 import 'package:evently/providers/events_provider.dart';
 import 'package:evently/providers/user_provider.dart';
@@ -44,7 +45,7 @@ class _HomeTabState extends State<HomeTab> {
           titleSpacing: 0,
           title: AppbarTitle(),
           actions: [ModeChanger(), LanguageChanger()],
-          bottom: tabBar(eventTab, context),
+          bottom: PreferredSize(preferredSize: Size.fromHeight(50.height), child: tabBar(eventTab, context)),
         ),
         body: EventListView(
           events: eventsProvider.selectedEventTypeIndex == 0
@@ -60,6 +61,7 @@ class _HomeTabState extends State<HomeTab> {
       tabAlignment: TabAlignment.start,
       isScrollable: true,
       dividerHeight: 0,
+      labelPadding: EdgeInsets.zero,
       onTap: (index) {
         context.read<EventsProvider>().changeSelectedEventTypeIndex(index);
         if (index == 0) {

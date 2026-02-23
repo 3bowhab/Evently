@@ -125,6 +125,8 @@
     "accountCreatedSuccessfully": "Account created successfully",
     "loggedInSuccessfully": "Logged in successfully",
     "@loggedInSuccessfully": {},
+    "loggedOutSuccessfully": "Logged out successfully",
+    "@loggedOutSuccessfully": {},
     "@accountCreatedSuccessfully": {},
     "invalidEmailOrPassword": "Invalid email or password",
     "@invalidEmailOrPassword": {},
@@ -153,5 +155,13 @@
     "sessionExpired": "Session expired. Please log in again.",
     "@sessionExpired": {},
     "anErrorOccurredPleaseTryAgain": "An error occurred. Please try again.",
-    "@anErrorOccurredPleaseTryAgain": {}
+    "@anErrorOccurredPleaseTryAgain": {},
+    "confirmLogout": "Confirm Logout",
+    "@confirmLogout": {},
+    "areYouSureYouWantToLogout": "Are you sure you want to logout?",
+    "@areYouSureYouWantToLogout": {},
+    "cancel": "Cancel",
+    "@cancel": {},
+    "confirm": "Confirm",
+    "@confirm": {}
 }

@@ -139,6 +139,7 @@ class _LoginViewState extends State<LoginView> {
                                 password: _passwordController.text,
                               );
                           final userCredential = credential.user;
+                          print('The user credential is $userCredential');
                           final newUser = userCredential != null
                               ? UserModel(
                                   uid: userCredential.uid,
@@ -147,8 +148,10 @@ class _LoginViewState extends State<LoginView> {
                                 )
                               : null;
 
+                          await context.read<UserProvider>().getUserData(
+                            newUser!.uid,
+                          );
                           Navigator.pop(context);
-                          context.read<UserProvider>().updateUser(newUser!);
                           ToastUtils.showSuccessToast(
                             AppLocalizations.of(context)!.loggedInSuccessfully,
                             context,

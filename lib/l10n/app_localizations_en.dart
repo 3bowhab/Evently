@@ -205,6 +205,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loggedInSuccessfully => 'Logged in successfully';
 
   @override
+  String get loggedOutSuccessfully => 'Logged out successfully';
+
+  @override
   String get invalidEmailOrPassword => 'Invalid email or password';
 
   @override
@@ -249,4 +252,16 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get anErrorOccurredPleaseTryAgain =>
       'An error occurred. Please try again.';
+
+  @override
+  String get confirmLogout => 'Confirm Logout';
+
+  @override
+  String get areYouSureYouWantToLogout => 'Are you sure you want to logout?';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get confirm => 'Confirm';
 }

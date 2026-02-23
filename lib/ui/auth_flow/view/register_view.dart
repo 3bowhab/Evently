@@ -13,6 +13,7 @@ import 'package:evently/core/utils/toast_utils.dart';
 import 'package:evently/core/utils/validations.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/models/user.dart';
+import 'package:evently/providers/user_provider.dart';
 import 'package:evently/services/firebase_service.dart';
 import 'package:evently/ui/auth_flow/widgets/auth_withgoogle_button.dart';
 import 'package:evently/ui/auth_flow/widgets/create_or_dont_have_account.dart';
@@ -21,6 +22,7 @@ import 'package:evently/ui/auth_flow/widgets/custom_text_form_field.dart';
 import 'package:evently/ui/auth_flow/widgets/or_row.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -138,6 +140,7 @@ class _RegisterViewState extends State<RegisterView> {
                                 password: _passwordController.text,
                               );
 
+                          print('The user credential is $credential');
                           await FirebaseService.addUserToFirestore(
                             UserModel(
                               name: _nameController.text,
@@ -145,6 +148,21 @@ class _RegisterViewState extends State<RegisterView> {
                               uid: credential.user?.uid ?? '',
                             ),
                           );
+
+                          final userCredential = credential.user;
+                          print('The user credential is $userCredential');
+                          final newUser = userCredential != null
+                              ? UserModel(
+                                  uid: userCredential.uid,
+                                  email: userCredential.email ?? '',
+                                  name: userCredential.displayName ?? '',
+                                )
+                              : null;
+
+                          await context.read<UserProvider>().getUserData(
+                            newUser!.uid,
+                          );
+
                           Navigator.pop(context);
                           ToastUtils.showSuccessToast(
                             AppLocalizations.of(
@@ -154,7 +172,7 @@ class _RegisterViewState extends State<RegisterView> {
                           );
                           Navigator.pushReplacementNamed(
                             context,
-                            AppRoutes.loginView,
+                            AppRoutes.mainLayoutView,
                           );
                         } on FirebaseAuthException catch (e) {
                           String errorMessage =

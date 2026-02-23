@@ -10,7 +10,6 @@ class AppbarTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userProvider = context.read<UserProvider>();
     return Row(
       children: [
         Column(
@@ -21,7 +20,7 @@ class AppbarTitle extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             Text(
-              userProvider.currentUser?.name ?? '',
+              context.watch<UserProvider>().currentUser?.name ?? '',
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
@@ -31,4 +30,6 @@ class AppbarTitle extends StatelessWidget {
       ],
     );
   }
+
+  
 }

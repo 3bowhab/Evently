@@ -6,6 +6,7 @@ import 'package:evently/core/utils/toast_utils.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/models/event.dart';
 import 'package:evently/models/event_type.dart';
+import 'package:evently/providers/events_provider.dart';
 import 'package:evently/providers/user_provider.dart';
 import 'package:evently/services/firebase_service.dart';
 import 'package:evently/ui/auth_flow/widgets/custom_button.dart';
@@ -145,11 +146,16 @@ class _AddEventState extends State<AddEvent> {
                             event,
                             userProvider.currentUser!.uid,
                           )
-                          .then((_) {
+                          .then((_) async {
                             ToastUtils.showSuccessToast(
                               'Event added successfully!',
                               context,
                             );
+                            
+                            await context.read<EventsProvider>().getAllEvents(
+                              userProvider.currentUser!.uid,
+                            );
+
                             Navigator.pop(context);
                           })
                           .catchError((error) {

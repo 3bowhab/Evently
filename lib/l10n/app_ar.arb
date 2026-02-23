@@ -76,5 +76,10 @@
     "requestTimeout": "انتهت مهلة الطلب",
     "sessionExpired": "انتهت جلستك",
     "anErrorOccurredPleaseTryAgain": "حدث خطأ ما. يرجى المحاولة مرة أخرى",
-    "loggedInSuccessfully": "تم تسجيل الدخول بنجاح"
+    "loggedInSuccessfully": "تم تسجيل الدخول بنجاح",
+    "loggedOutSuccessfully": "تم تسجيل الخروج بنجاح",
+    "confirmLogout": "تأكيد تسجيل الخروج",
+    "areYouSureYouWantToLogout": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+    "cancel": "إلغاء",
+    "confirm": "تأكيد"
 }
