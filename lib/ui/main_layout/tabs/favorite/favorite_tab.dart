@@ -4,8 +4,8 @@ import 'package:evently/models/event_type.dart';
 import 'package:evently/providers/events_provider.dart';
 import 'package:evently/providers/user_provider.dart';
 import 'package:evently/ui/auth_flow/widgets/custom_text_form_field.dart';
-import 'package:evently/ui/main_layout/tabs/home/widgets/custom_tab.dart';
-import 'package:evently/ui/main_layout/tabs/home/widgets/event_list_view.dart';
+import 'package:evently/ui/main_layout/tabs/favorite/event_list_view.dart';
+import 'package:evently/ui/main_layout/tabs/home/widgets/custom_tab_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,17 +17,18 @@ class FavoriteTab extends StatefulWidget {
 }
 
 class _FavoriteTabState extends State<FavoriteTab> {
-  late final EventsProvider eventsProvider;
+  late final EventsProvider readEventsProvider;
 
   @override
   void initState() {
-    eventsProvider = context.read<EventsProvider>();
-    getEvents();
     super.initState();
+    readEventsProvider = context.read<EventsProvider>();
+    readEventsProvider.selectedEventTypeIndex = 0;
+    getEvents();
   }
 
   void getEvents() async {
-    await eventsProvider.getFavoriteEvents(
+    await readEventsProvider.getFavoriteEvents(
       context.read<UserProvider>().currentUser?.uid ?? '',
     );
   }
@@ -50,13 +51,30 @@ class _FavoriteTabState extends State<FavoriteTab> {
           titleSpacing: 0,
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(50.height),
-            child: tabBar(eventTab, context),
+            child: CustomTabBar(
+              eventTab: eventTab,
+              context: context,
+              onTap: (index) {
+                context.read<EventsProvider>().changeSelectedEventTypeIndex(
+                  index,
+                );
+                if (index == 0) {
+                  context.read<EventsProvider>().getFavoriteEvents(
+                    context.read<UserProvider>().currentUser?.uid ?? '',
+                  );
+                } else {
+                  context
+                      .read<EventsProvider>()
+                      .getFilterFavoriteEventsByEventType(eventTab[index].name);
+                }
+              },
+            ),
           ),
         ),
         body: Column(
           children: [
             Expanded(
-              child: EventListView(
+              child: FavoriteEventListView(
                 events: eventsProvider.selectedEventTypeIndex == 0
                     ? eventsProvider.favoriteEvents
                     : eventsProvider.filteredFavoriteEvents,
@@ -65,32 +83,6 @@ class _FavoriteTabState extends State<FavoriteTab> {
           ],
         ),
       ),
-    );
-  }
-
-  TabBar tabBar(List<EventType> eventTab, BuildContext context) {
-    return TabBar(
-      tabAlignment: TabAlignment.start,
-      isScrollable: true,
-      dividerHeight: 0,
-      labelPadding: EdgeInsets.zero,
-      onTap: (index) {
-        context.read<EventsProvider>().changeSelectedEventTypeIndex(index);
-        if (index == 0) {
-          setState(() {
-            context.read<EventsProvider>().getFavoriteEvents(
-              context.read<UserProvider>().currentUser?.uid ?? '',
-            );
-          });
-        } else {
-          setState(() {
-            context.read<EventsProvider>().getFilterFavoriteEventsByEventType(
-              eventTab[index].name,
-            );
-          });
-        }
-      },
-      tabs: eventTab.map((e) => CustomTab(e: e)).toList(),
     );
   }
 }

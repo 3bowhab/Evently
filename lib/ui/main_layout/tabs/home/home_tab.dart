@@ -3,7 +3,7 @@ import 'package:evently/models/event_type.dart';
 import 'package:evently/providers/events_provider.dart';
 import 'package:evently/providers/user_provider.dart';
 import 'package:evently/ui/main_layout/tabs/home/widgets/appbar_title.dart';
-import 'package:evently/ui/main_layout/tabs/home/widgets/custom_tab.dart';
+import 'package:evently/ui/main_layout/tabs/home/widgets/custom_tab_bar.dart';
 import 'package:evently/ui/main_layout/tabs/home/widgets/event_list_view.dart';
 import 'package:evently/ui/main_layout/tabs/home/widgets/mode_changer.dart';
 import 'package:evently/ui/main_layout/tabs/home/widgets/language_changer.dart';
@@ -18,17 +18,18 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
-  late final EventsProvider eventsProvider;
+  late final EventsProvider readEventsProvider;
 
   @override
   void initState() {
-    eventsProvider = context.read<EventsProvider>();
-    getEvents();
     super.initState();
+    readEventsProvider = context.read<EventsProvider>();
+    readEventsProvider.selectedEventTypeIndex = 0;
+    getEvents();
   }
 
   void getEvents() async {
-    await eventsProvider.getAllEvents(
+    await readEventsProvider.getAllEvents(
       context.read<UserProvider>().currentUser?.uid ?? '',
     );
   }
@@ -45,7 +46,28 @@ class _HomeTabState extends State<HomeTab> {
           titleSpacing: 0,
           title: AppbarTitle(),
           actions: [ModeChanger(), LanguageChanger()],
-          bottom: PreferredSize(preferredSize: Size.fromHeight(50.height), child: tabBar(eventTab, context)),
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(50.height),
+            child: CustomTabBar(
+              eventTab: eventTab,
+              context: context,
+              onTap: (index) {
+                context.read<EventsProvider>().changeSelectedEventTypeIndex(
+                  index,
+                );
+                if (index == 0) {
+                  context.read<EventsProvider>().getAllEvents(
+                    context.read<UserProvider>().currentUser?.uid ?? '',
+                  );
+                } else {
+                  context.read<EventsProvider>().getFilteredEventsByEventType(
+                    context.read<UserProvider>().currentUser?.uid ?? '',
+                    eventTab[index].name,
+                  );
+                }
+              },
+            ),
+          ),
         ),
         body: EventListView(
           events: eventsProvider.selectedEventTypeIndex == 0
@@ -53,37 +75,6 @@ class _HomeTabState extends State<HomeTab> {
               : eventsProvider.filteredEvents,
         ),
       ),
-    );
-  }
-
-  TabBar tabBar(List<EventType> eventTab, BuildContext context) {
-    return TabBar(
-      tabAlignment: TabAlignment.start,
-      isScrollable: true,
-      dividerHeight: 0,
-      labelPadding: EdgeInsets.zero,
-      onTap: (index) {
-        context.read<EventsProvider>().changeSelectedEventTypeIndex(index);
-        if (index == 0) {
-          setState(() {
-            context.read<EventsProvider>().getAllEvents(
-              context.read<UserProvider>().currentUser?.uid ?? '',
-            );
-          });
-        } else {
-          setState(() {
-            context.read<EventsProvider>().getFilteredEventsByEventType(
-              context.read<UserProvider>().currentUser?.uid ?? '',
-              eventTab[index].name,
-            );
-          });
-        }
-      },
-      tabs: eventTab
-          .map(
-            (e) => CustomTab(e: e),
-          )
-          .toList(),
     );
   }
 }

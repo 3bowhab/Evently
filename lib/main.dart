@@ -11,7 +11,8 @@ import 'package:evently/ui/auth_flow/view/login_view.dart';
 import 'package:evently/ui/auth_flow/view/register_view.dart';
 import 'package:evently/ui/initial_flow/view/onboardings_view.dart';
 import 'package:evently/ui/initial_flow/view/setup_view.dart';
-import 'package:evently/ui/main_layout/event/view/add_event.dart';
+import 'package:evently/ui/main_layout/event_features/add_event/view/add_event.dart';
+import 'package:evently/ui/main_layout/event_features/event_details/view/event_details.dart';
 import 'package:evently/ui/main_layout/main_layout_view.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -87,6 +88,7 @@ class MyApp extends StatelessWidget {
         AppRoutes.registerView: (context) => const RegisterView(),
         AppRoutes.forgetPasswordView: (context) => const ForgetPasswordView(),
         AppRoutes.addEventView: (context) => const AddEvent(),
+        AppRoutes.eventDetailsView: (context) => const EventDetails(),
       },
     );
   }

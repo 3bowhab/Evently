@@ -81,5 +81,6 @@
     "confirmLogout": "تأكيد تسجيل الخروج",
     "areYouSureYouWantToLogout": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
     "cancel": "إلغاء",
-    "confirm": "تأكيد"
+    "confirm": "تأكيد",
+    "eventDetails": "تفاصيل الفعالية"
 }

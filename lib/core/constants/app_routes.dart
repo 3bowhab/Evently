@@ -8,4 +8,5 @@ class AppRoutes {
   static const String registerView = '/register_view';
   static const String forgetPasswordView = '/forget-password';
   static const String addEventView = '/add-event';
+  static const String eventDetailsView = '/event-details';
 }
