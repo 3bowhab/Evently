@@ -7,6 +7,7 @@ import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/models/event.dart';
 import 'package:evently/models/event_type.dart';
 import 'package:evently/providers/events_provider.dart';
+import 'package:evently/providers/theme_provider.dart';
 import 'package:evently/providers/user_provider.dart';
 import 'package:evently/services/firebase_service.dart';
 import 'package:evently/ui/auth_flow/widgets/custom_button.dart';
@@ -34,12 +35,30 @@ class _AddEventState extends State<AddEvent> {
   String? formatedTime;
   late final TextEditingController titleController;
   late final TextEditingController descriptionController;
+  bool isInitialized = false;
 
   @override
   void initState() {
     super.initState();
     titleController = TextEditingController();
     descriptionController = TextEditingController();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final event = ModalRoute.of(context)?.settings.arguments as Event?;
+
+    if (!isInitialized && event != null) {
+      titleController.text = event.title;
+      descriptionController.text = event.description;
+      selectedDate = event.dateTime;
+      selectedTime = TimeOfDay.fromDateTime(event.dateTime);
+      formatedDate = DateFormat('yMd').format(event.dateTime);
+      formatedTime = TimeOfDay.fromDateTime(event.dateTime).format(context);
+      isInitialized = true;
+    }
   }
 
   @override
@@ -51,6 +70,8 @@ class _AddEventState extends State<AddEvent> {
 
   @override
   Widget build(BuildContext context) {
+    final event = ModalRoute.of(context)?.settings.arguments as Event?;
+    final isEdit = event != null;
     final eventTabs = EventType.getEventTypes(context).sublist(1);
     final userProvider = context.read<UserProvider>();
     String imgPath = eventTabs[selectedIndex].imagePath.changeImageTheme(
@@ -60,7 +81,11 @@ class _AddEventState extends State<AddEvent> {
     return GestureDetector(
       onTap: () => FocusUtil.hideKeyboard(context),
       child: Scaffold(
-        appBar: AppBarTitle(title: AppLocalizations.of(context)!.addEvent),
+        appBar: AppBarTitle(
+          title: isEdit
+              ? AppLocalizations.of(context)!.editEvent
+              : AppLocalizations.of(context)!.addEvent,
+        ),
         body: Padding(
           padding: AppPadding.view,
           child: SingleChildScrollView(
@@ -149,7 +174,7 @@ class _AddEventState extends State<AddEvent> {
                         selectedTime!.hour,
                         selectedTime!.minute,
                       );
-                      
+
                       Event event = Event(
                         // id: DateTime.now().millisecondsSinceEpoch.toString(),
                         eventType: eventTabs[selectedIndex].name,
@@ -158,30 +183,36 @@ class _AddEventState extends State<AddEvent> {
                         description: descriptionController.text,
                         imagePath: eventTabs[selectedIndex].imagePath,
                       );
-                      FirebaseService.addEventToFirestore(
-                            event,
-                            userProvider.currentUser!.uid,
-                          )
-                          .then((_) async {
-                            ToastUtils.showSuccessToast(
-                              'Event added successfully!',
-                              context,
-                            );
-                            
-                            await context.read<EventsProvider>().getAllEvents(
-                              userProvider.currentUser!.uid,
-                            );
 
-                            Navigator.pop(context);
-                          })
-                          .catchError((error) {
-                            ToastUtils.showErrorToast(
-                              'Failed to add event: $error',
-                              context,
-                            );
-                          });
+                      if (isEdit) {
+                      } else {
+                        FirebaseService.addEventToFirestore(
+                              event,
+                              userProvider.currentUser!.uid,
+                            )
+                            .then((_) async {
+                              ToastUtils.showSuccessToast(
+                                'Event added successfully!',
+                                context,
+                              );
+
+                              await context.read<EventsProvider>().getAllEvents(
+                                userProvider.currentUser!.uid,
+                              );
+
+                              Navigator.pop(context);
+                            })
+                            .catchError((error) {
+                              ToastUtils.showErrorToast(
+                                'Failed to add event: $error',
+                                context,
+                              );
+                            });
+                      }
                     },
-                    label: AppLocalizations.of(context)!.addEvent,
+                    label: isEdit
+                        ? AppLocalizations.of(context)!.updateEvent
+                        : AppLocalizations.of(context)!.addEvent,
                   ),
                   10.verticalSizedBox,
                 ],
@@ -199,6 +230,14 @@ class _AddEventState extends State<AddEvent> {
       initialDate: DateTime.now(),
       firstDate: DateTime.now(),
       lastDate: DateTime.now().add(Duration(days: 730)),
+      builder: (context, child) {
+        return Theme(
+          data: Provider.of<ThemeProvider>(context).currentMode == ThemeMode.dark
+              ? ThemeData.dark(useMaterial3: true)
+              : ThemeData.light(useMaterial3: true),
+          child: child!,
+        );
+      },
     );
     if (picked != null) {
       setState(() {
@@ -212,6 +251,14 @@ class _AddEventState extends State<AddEvent> {
     TimeOfDay? picked = await showTimePicker(
       context: context,
       initialTime: TimeOfDay.now(),
+      builder: (context, child) {
+        return Theme(
+          data: Provider.of<ThemeProvider>(context).currentMode == ThemeMode.dark
+              ? ThemeData.dark(useMaterial3: true)
+              : ThemeData.light(useMaterial3: true),
+          child: child!,
+        );
+      },
     );
     if (picked != null) {
       setState(() {

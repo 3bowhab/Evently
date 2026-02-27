@@ -165,5 +165,9 @@
     "confirm": "Confirm",
     "@confirm": {},
     "eventDetails": "Event Details",
-    "@eventDetails": {}
+    "@eventDetails": {},
+    "editEvent": "Edit Event",
+    "@editEvent": {},
+    "updateEvent": "Update Event",
+    "@updateEvent": {}
 }

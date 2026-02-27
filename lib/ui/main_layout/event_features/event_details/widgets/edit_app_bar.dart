@@ -1,5 +1,7 @@
+import 'package:evently/core/constants/app_routes.dart';
 import 'package:evently/core/extensions/responsive_sized_box_extension.dart';
 import 'package:evently/l10n/app_localizations.dart';
+import 'package:evently/models/event.dart';
 import 'package:evently/ui/main_layout/event_features/add_event/widgets/app_bar_title.dart';
 import 'package:evently/ui/main_layout/event_features/event_details/widgets/appbar_action_buttons.dart';
 import 'package:flutter/material.dart';
@@ -12,11 +14,15 @@ class EditAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final event = ModalRoute.of(context)!.settings.arguments as Event;
+
     return AppBarTitle(
       title: AppLocalizations.of(context)!.eventDetails,
       actions: [
         AppbarActionButtons(
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, AppRoutes.addEventView, arguments: event);
+          },
           icon: Icon(
             Icons.edit_outlined,
             color: Theme.of(context).colorScheme.primary,

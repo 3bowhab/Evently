@@ -14,4 +14,9 @@ class UserProvider extends ChangeNotifier {
     );
     notifyListeners();
   }
+
+  void updateUserData(UserModel updatedUser) {
+    currentUser = updatedUser;
+    notifyListeners();
+  }
 }

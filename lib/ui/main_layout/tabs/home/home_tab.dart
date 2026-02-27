@@ -59,11 +59,15 @@ class _HomeTabState extends State<HomeTab> {
                   context.read<EventsProvider>().getAllEvents(
                     context.read<UserProvider>().currentUser?.uid ?? '',
                   );
+                  print('index: $index');
                 } else {
                   context.read<EventsProvider>().getFilteredEventsByEventType(
                     context.read<UserProvider>().currentUser?.uid ?? '',
-                    eventTab[index].name,
+                    eventTab[index].etId,
+                    // Issue: Filtering by localized names failed when the language changed to Arabic.
+                    // Solution: Used a static unique ID for database queries instead of the translated display name.
                   );
+                  print('index: $index');
                 }
               },
             ),

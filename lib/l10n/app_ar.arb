@@ -82,5 +82,7 @@
     "areYouSureYouWantToLogout": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
     "cancel": "إلغاء",
     "confirm": "تأكيد",
-    "eventDetails": "تفاصيل الفعالية"
+    "eventDetails": "تفاصيل الفعالية",
+    "editEvent": "تعديل الفعالية",
+    "updateEvent": "تحديث الفعالية"
 }

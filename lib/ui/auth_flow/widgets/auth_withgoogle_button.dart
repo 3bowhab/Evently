@@ -2,9 +2,12 @@ import 'package:evently/core/constants/app_images.dart';
 import 'package:evently/core/constants/app_routes.dart';
 import 'package:evently/core/utils/dialog_utils.dart';
 import 'package:evently/core/utils/toast_utils.dart';
+import 'package:evently/models/user.dart';
+import 'package:evently/providers/user_provider.dart';
 import 'package:evently/services/firebase_service.dart';
 import 'package:evently/ui/auth_flow/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AuthWithgoogleButton extends StatelessWidget {
   final String label;
@@ -30,10 +33,20 @@ class AuthWithgoogleButton extends StatelessWidget {
             return;
           }
 
-          ToastUtils.showSuccessToast(
-            toastMessage,
-            context,
-          );
+          final userCredential = credential.user;
+          print('The user credential is $userCredential');
+          final newUser = userCredential != null
+              ? UserModel(
+                  uid: userCredential.uid,
+                  email: userCredential.email ?? '',
+                  name: userCredential.displayName ?? '',
+                )
+              : null;
+          await FirebaseService.addUserToFirestore(newUser!);
+
+          context.read<UserProvider>().updateUserData(newUser);
+
+          ToastUtils.showSuccessToast(toastMessage, context);
 
           Navigator.pushReplacementNamed(context, AppRoutes.mainLayoutView);
         } catch (e) {
