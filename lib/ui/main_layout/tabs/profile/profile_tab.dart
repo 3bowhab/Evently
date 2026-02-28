@@ -7,6 +7,7 @@ import 'package:evently/core/utils/toast_utils.dart';
 import 'package:evently/providers/theme_provider.dart';
 import 'package:evently/providers/user_provider.dart';
 import 'package:evently/ui/main_layout/tabs/home/widgets/language_changer.dart';
+import 'package:evently/ui/main_layout/tabs/profile/widgets/custom_show_dialog.dart';
 import 'package:evently/ui/main_layout/tabs/profile/widgets/setting_widget.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -84,57 +85,23 @@ class ProfileTab extends StatelessWidget {
         // Logout
         SettingWidget(
           title: AppLocalizations.of(context)!.logout,
-          trailing: Padding(
-            padding: 5.horizontalPadding,
-            child: InkWell(
-              onTap: () async {
-                await showDialog(
-                  context: context,
-                  builder: (context) => AlertDialog(
-                    title: Text(AppLocalizations.of(context)!.confirmLogout),
-                    content: Text(
-                      AppLocalizations.of(context)!.areYouSureYouWantToLogout,
-                    ),
-                    actions: [
-                      TextButton(
-                        onPressed: () => Navigator.pop(context, false),
-                        child: Text(
-                          AppLocalizations.of(context)!.cancel,
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () async {
-                          await FirebaseAuth.instance.signOut();
+          trailing: CustomShowDialog(
+            title: AppLocalizations.of(context)!.confirmLogout,
+            contentText: AppLocalizations.of(
+              context,
+            )!.areYouSureYouWantToLogout,
+            onConfirm: () async {
+              await FirebaseAuth.instance.signOut();
 
-                          Navigator.of(context).pushNamedAndRemoveUntil(
-                            AppRoutes.loginView,
-                            (route) => false,
-                          );
+              Navigator.of(
+                context,
+              ).pushNamedAndRemoveUntil(AppRoutes.loginView, (route) => false);
 
-                          ToastUtils.showSuccessToast(
-                            AppLocalizations.of(context)!.loggedOutSuccessfully,
-                            context,
-                          );
-                        },
-                        child: Text(
-                          AppLocalizations.of(context)!.confirm,
-                          style: Theme.of(context).textTheme.titleMedium
-                              ?.copyWith(
-                                color: Theme.of(context).colorScheme.error,
-                              ),
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              },
-              child: ImageIcon(
-                AssetImage(Assets.iconsLogout),
-                color: Theme.of(context).colorScheme.error,
-                size: 32.width,
-              ),
-            ),
+              ToastUtils.showSuccessToast(
+                AppLocalizations.of(context)!.loggedOutSuccessfully,
+                context,
+              );
+            },
           ),
         ),
       ],

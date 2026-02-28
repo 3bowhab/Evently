@@ -58,9 +58,13 @@ class OnbordingBody extends StatelessWidget {
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
               8.verticalSizedBox,
-              Text(
-                onboarding[index].description,
-                style: Theme.of(context).textTheme.bodyLarge,
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Text(
+                    onboarding[index].description,
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                ),
               ),
             ],
           );

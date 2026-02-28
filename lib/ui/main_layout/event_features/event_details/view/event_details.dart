@@ -7,15 +7,29 @@ import 'package:evently/ui/main_layout/event_features/event_details/widgets/edit
 import 'package:evently/ui/main_layout/event_features/event_details/widgets/event_info_container.dart';
 import 'package:flutter/material.dart';
 
-class EventDetails extends StatelessWidget {
-  const EventDetails({super.key});
+// ignore: must_be_immutable
+class EventDetails extends StatefulWidget {
+  const EventDetails({super.key,});
+  
+  @override
+  State<EventDetails> createState() => _EventDetailsState();
+}
+
+class _EventDetailsState extends State<EventDetails> {
+  Event? editedEventModel;
 
   @override
   Widget build(BuildContext context) {
-    final event = ModalRoute.of(context)!.settings.arguments as Event;
+    final event = editedEventModel ?? ModalRoute.of(context)!.settings.arguments as Event;
 
     return Scaffold(
-      appBar: EditAppBar(),
+      appBar: EditAppBar(
+        onEventUpdated: (newEvent) {
+          setState(() {
+            editedEventModel = newEvent;
+          });
+        },
+      ),
       body: Padding(
         padding: AppPadding.view,
         child: SingleChildScrollView(

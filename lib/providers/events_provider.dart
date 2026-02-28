@@ -45,12 +45,6 @@ class EventsProvider extends ChangeNotifier {
       isFavorite,
     );
     notifyListeners();
-    // // Update the local state after changing the favorite status
-    // int eventIndex = events.indexWhere((event) => event.id == eventId);
-    // if (eventIndex != -1) {
-    //   events[eventIndex].isFavorite = isFavorite;
-    //   notifyListeners();
-    // }
   }
 
   // Fetch favorite events for the current user
@@ -66,6 +60,20 @@ class EventsProvider extends ChangeNotifier {
     filteredFavoriteEvents = favoriteEvents
         .where((event) => event.eventType == eventType)
         .toList();
+    notifyListeners();
+  }
+
+  void deleteEvent(String userId, String eventId) async {
+    await FirebaseService.getEventsCollection(userId).doc(eventId).delete();
+    events.removeWhere((event) => event.id == eventId);
+    filteredEvents.removeWhere((event) => event.id == eventId);
+    notifyListeners();
+  }
+
+  void updateEvent(Event event, String userId) async {
+    await FirebaseService.getEventsCollection(
+      userId,
+    ).doc(event.id).update(event.toFirestore());
     notifyListeners();
   }
 }

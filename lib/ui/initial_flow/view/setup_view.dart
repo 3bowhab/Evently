@@ -24,73 +24,76 @@ class SetupView extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: AppPadding.view,
-          child: Column(
-            crossAxisAlignment: .stretch,
-            children: [
-              Image.asset(
-                themeProvider.currentMode == ThemeMode.dark
-                    ? Assets.imagesEventlyIconDark
-                    : Assets.imagesEventlyIcon,
-              ),
-              24.verticalSizedBox,
-              SvgPicture.asset(
-                Assets.svgBeingCreative2,
-                colorFilter: ColorFilter.mode(
-                  Theme.of(context).iconTheme.color!,
-                  BlendMode.srcIn,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: .stretch,
+              children: [
+                Image.asset(
+                  themeProvider.currentMode == ThemeMode.dark
+                      ? Assets.imagesEventlyIconDark
+                      : Assets.imagesEventlyIcon,
                 ),
-              ),
-              24.verticalSizedBox,
-              Text(
-                AppLocalizations.of(context)!.onboarding1title,
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-              8.verticalSizedBox,
-              Text(
-                AppLocalizations.of(context)!.onboarding1description,
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
-              16.verticalSizedBox,
-              Row(
-                children: [
-                  Text(
-                    AppLocalizations.of(context)!.language,
-                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      color: Theme.of(context).colorScheme.tertiary,
-                    ),
+                24.verticalSizedBox,
+                SvgPicture.asset(
+                  Assets.svgBeingCreative2,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).iconTheme.color!,
+                    BlendMode.srcIn,
                   ),
-                  Spacer(),
-                  ChooseLanguage(languageCode: 'en'),
-                  10.horizontalSizedBox,
-                  ChooseLanguage(languageCode: 'ar'),
-                ],
-              ),
-              16.verticalSizedBox,
-              Row(
-                children: [
-                  Text(
-                    AppLocalizations.of(context)!.theme,
-                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      color: Theme.of(context).colorScheme.tertiary,
+                ),
+                24.verticalSizedBox,
+                Text(
+                  AppLocalizations.of(context)!.onboarding1title,
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
+                8.verticalSizedBox,
+                Text(
+                  AppLocalizations.of(context)!.onboarding1description,
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
+                16.verticalSizedBox,
+                Row(
+                  children: [
+                    Text(
+                      AppLocalizations.of(context)!.language,
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        color: Theme.of(context).colorScheme.tertiary,
+                      ),
                     ),
-                  ),
-                  Spacer(),
-                  ChooseTheme(themeCode: ThemeMode.light),
-                  10.horizontalSizedBox,
-                  ChooseTheme(themeCode: ThemeMode.dark),
-                ],
-              ),
-              Spacer(),
-              CustomButton(
-                onPressed: () {
-                  Navigator.pushReplacementNamed(
-                    context,
-                    AppRoutes.onboardingsView,
-                  );
-                },
-                label: AppLocalizations.of(context)!.letsStart,
-              ),
-            ],
+                    Spacer(),
+                    ChooseLanguage(languageCode: 'en'),
+                    10.horizontalSizedBox,
+                    ChooseLanguage(languageCode: 'ar'),
+                  ],
+                ),
+                16.verticalSizedBox,
+                Row(
+                  children: [
+                    Text(
+                      AppLocalizations.of(context)!.theme,
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        color: Theme.of(context).colorScheme.tertiary,
+                      ),
+                    ),
+                    Spacer(),
+                    ChooseTheme(themeCode: ThemeMode.light),
+                    10.horizontalSizedBox,
+                    ChooseTheme(themeCode: ThemeMode.dark),
+                  ],
+                ),
+                24.verticalSizedBox,
+                CustomButton(
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(
+                      context,
+                      AppRoutes.onboardingsView,
+                    );
+                  },
+                  label: AppLocalizations.of(context)!.letsStart,
+                ),
+                12.verticalSizedBox,
+              ],
+            ),
           ),
         ),
       ),

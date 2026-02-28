@@ -50,8 +50,9 @@ class _FavoriteTabState extends State<FavoriteTab> {
           ),
           titleSpacing: 0,
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(50.height),
+            preferredSize: Size.fromHeight(60.height),
             child: CustomTabBar(
+              selectedIndex: eventsProvider.selectedEventTypeIndex,
               eventTab: eventTab,
               context: context,
               onTap: (index) {

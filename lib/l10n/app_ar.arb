@@ -84,5 +84,8 @@
     "confirm": "تأكيد",
     "eventDetails": "تفاصيل الفعالية",
     "editEvent": "تعديل الفعالية",
-    "updateEvent": "تحديث الفعالية"
+    "updateEvent": "تحديث الفعالية",
+    "deleteEvent": "حذف الفعالية",
+    "areYouSureYouWantToDeleteThisEvent": "هل أنت متأكد أنك تريد حذف هذه الفعالية؟",
+    "eventDeletedSuccessfully": "تم حذف الفعالية بنجاح"
 }

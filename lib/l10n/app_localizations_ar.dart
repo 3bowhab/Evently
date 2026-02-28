@@ -272,4 +272,14 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get updateEvent => 'تحديث الفعالية';
+
+  @override
+  String get deleteEvent => 'حذف الفعالية';
+
+  @override
+  String get areYouSureYouWantToDeleteThisEvent =>
+      'هل أنت متأكد أنك تريد حذف هذه الفعالية؟';
+
+  @override
+  String get eventDeletedSuccessfully => 'تم حذف الفعالية بنجاح';
 }

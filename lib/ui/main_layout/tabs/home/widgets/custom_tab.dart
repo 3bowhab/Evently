@@ -5,10 +5,8 @@ import 'package:flutter/material.dart';
 
 class CustomTab extends StatelessWidget {
   final EventType e;
-  const CustomTab({
-    super.key,
-    required this.e,
-  });
+  final bool isSelected;
+  const CustomTab({super.key, required this.e, required this.isSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +20,11 @@ class CustomTab extends StatelessWidget {
             8.horizontalSizedBox,
             Text(
               e.name,
-              style: Theme.of(context).textTheme.titleMedium,
+              style: isSelected
+                  ? Theme.of(
+                      context,
+                    ).textTheme.titleMedium?.copyWith(color: Colors.white)
+                  : Theme.of(context).textTheme.titleMedium,
             ),
           ],
         ),

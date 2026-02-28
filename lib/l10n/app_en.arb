@@ -169,5 +169,11 @@
     "editEvent": "Edit Event",
     "@editEvent": {},
     "updateEvent": "Update Event",
-    "@updateEvent": {}
+    "@updateEvent": {},
+    "deleteEvent": "Delete Event",
+    "@deleteEvent": {},
+    "areYouSureYouWantToDeleteThisEvent": "Are you sure you want to delete this event?",
+    "@areYouSureYouWantToDeleteThisEvent": {},
+    "eventDeletedSuccessfully": "Event deleted successfully",
+    "@eventDeletedSuccessfully": {}
 }

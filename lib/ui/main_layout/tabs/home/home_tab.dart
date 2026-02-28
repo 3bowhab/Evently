@@ -47,9 +47,10 @@ class _HomeTabState extends State<HomeTab> {
           title: AppbarTitle(),
           actions: [ModeChanger(), LanguageChanger()],
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(50.height),
+            preferredSize: Size.fromHeight(60.height),
             child: CustomTabBar(
               eventTab: eventTab,
+              selectedIndex: eventsProvider.selectedEventTypeIndex,
               context: context,
               onTap: (index) {
                 context.read<EventsProvider>().changeSelectedEventTypeIndex(

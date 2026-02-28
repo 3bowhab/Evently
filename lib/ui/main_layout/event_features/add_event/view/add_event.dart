@@ -48,15 +48,15 @@ class _AddEventState extends State<AddEvent> {
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    final event = ModalRoute.of(context)?.settings.arguments as Event?;
+    final argEvent = ModalRoute.of(context)?.settings.arguments as Event?;
 
-    if (!isInitialized && event != null) {
-      titleController.text = event.title;
-      descriptionController.text = event.description;
-      selectedDate = event.dateTime;
-      selectedTime = TimeOfDay.fromDateTime(event.dateTime);
-      formatedDate = DateFormat('yMd').format(event.dateTime);
-      formatedTime = TimeOfDay.fromDateTime(event.dateTime).format(context);
+    if (!isInitialized && argEvent != null) {
+      titleController.text = argEvent.title;
+      descriptionController.text = argEvent.description;
+      selectedDate = argEvent.dateTime;
+      selectedTime = TimeOfDay.fromDateTime(argEvent.dateTime);
+      formatedDate = DateFormat('yMd').format(argEvent.dateTime);
+      formatedTime = TimeOfDay.fromDateTime(argEvent.dateTime).format(context);
       isInitialized = true;
     }
   }
@@ -175,8 +175,10 @@ class _AddEventState extends State<AddEvent> {
                         selectedTime!.minute,
                       );
 
+                      final argEvent =
+                          ModalRoute.of(context)?.settings.arguments as Event?;
                       Event event = Event(
-                        // id: DateTime.now().millisecondsSinceEpoch.toString(),
+                        id: argEvent?.id ?? '',
                         eventType: eventTabs[selectedIndex].name,
                         dateTime: finalDateTime,
                         title: titleController.text,
@@ -185,6 +187,26 @@ class _AddEventState extends State<AddEvent> {
                       );
 
                       if (isEdit) {
+                        FirebaseService.updateEventInFirestore(
+                          event,
+                          userProvider.currentUser!.uid,
+                        ).then((_) async {
+                          ToastUtils.showSuccessToast(
+                            'Event updated successfully!',
+                            context,
+                          );
+
+                          await context.read<EventsProvider>().getAllEvents(
+                            userProvider.currentUser!.uid,
+                          );
+
+                          Navigator.pop(context, event);
+                        }).catchError((error) {
+                          ToastUtils.showErrorToast(
+                            'Failed to update event: $error',
+                            context,
+                          );
+                        });
                       } else {
                         FirebaseService.addEventToFirestore(
                               event,

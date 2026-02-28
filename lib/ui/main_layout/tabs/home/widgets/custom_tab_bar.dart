@@ -8,10 +8,12 @@ class CustomTabBar extends StatelessWidget {
     required this.eventTab,
     required this.context,
     required this.onTap,
+    required this.selectedIndex,
   });
 
   final List<EventType> eventTab;
   final BuildContext context;
+  final int selectedIndex;
   final void Function(int index) onTap;
 
   @override
@@ -19,10 +21,11 @@ class CustomTabBar extends StatelessWidget {
     return TabBar(
       tabAlignment: TabAlignment.start,
       isScrollable: true,
+      labelColor: Colors.white,
       dividerHeight: 0,
       labelPadding: EdgeInsets.zero,
       onTap: (index) => onTap(index),
-      tabs: eventTab.map((e) => CustomTab(e: e)).toList(),
+      tabs: eventTab.map((e) => CustomTab(e: e, isSelected: eventTab.indexOf(e) == selectedIndex)).toList(),
     );
   }
 }
