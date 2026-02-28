@@ -1,5 +1,5 @@
+import 'package:evently/core/extensions/responsive_sized_box_extension.dart';
 import 'package:evently/l10n/app_localizations.dart';
-import 'package:evently/models/event_type.dart';
 import 'package:evently/providers/events_provider.dart';
 import 'package:evently/providers/user_provider.dart';
 import 'package:evently/ui/auth_flow/widgets/custom_text_form_field.dart';
@@ -36,33 +36,25 @@ class _FavoriteTabState extends State<FavoriteTab> {
   @override
   Widget build(BuildContext context) {
     final eventsProvider = context.watch<EventsProvider>();
-    final eventTab = EventType.getEventTypes(context);
 
-    return DefaultTabController(
-      length: eventTab.length,
-      child: Scaffold(
-        appBar: AppBar(
-          title: CustomTextFormField(
-            controller: searchController,
-            validator: (_) => null,
-            labelText: AppLocalizations.of(context)!.searchForEvent,
-            suffixIcon: Icons.search,
-            onChanged: (value) {
-              context.read<EventsProvider>().searchInFavoriteEvents(value);
-            },
+    return Column(
+      children: [
+        10.verticalSizedBox,
+        CustomTextFormField(
+          controller: searchController,
+          validator: (_) => null,
+          labelText: AppLocalizations.of(context)!.searchForEvent,
+          suffixIcon: Icons.search,
+          onChanged: (value) {
+            context.read<EventsProvider>().searchInFavoriteEvents(value);
+          },
+        ),
+        Expanded(
+          child: FavoriteEventListView(
+            events: eventsProvider.filteredFavoriteEvents,
           ),
-          titleSpacing: 0,
         ),
-        body: Column(
-          children: [
-            Expanded(
-              child: FavoriteEventListView(
-                events: eventsProvider.filteredFavoriteEvents,
-              ),
-            ),
-          ],
-        ),
-      ),
+      ],
     );
   }
 }
