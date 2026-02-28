@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AppUtils {
-  AppUtils._();
+class FocusUtil {
+  FocusUtil._();
 
   static void hideKeyboard(BuildContext context) {
     FocusScope.of(context).unfocus();

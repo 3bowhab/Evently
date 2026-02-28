@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 
 class AppBarTitle extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-  const AppBarTitle({super.key, required this.title});
+  final List<Widget>? actions;
+
+  const AppBarTitle({super.key, required this.title, this.actions});
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -22,6 +24,7 @@ class AppBarTitle extends StatelessWidget implements PreferredSizeWidget {
         ],
       ),
       title: Text(title, style: Theme.of(context).textTheme.titleLarge),
+      actions: actions,
     );
   }
 }

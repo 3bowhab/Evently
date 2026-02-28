@@ -10,6 +10,7 @@ class CustomTextFormField extends StatelessWidget {
   final IconData? prefixIcon;
   final IconData? suffixIcon;
   final int? maxLines;
+  final Function(String)? onChanged;
 
   const CustomTextFormField({
     super.key,
@@ -20,6 +21,7 @@ class CustomTextFormField extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon, 
     this.maxLines,
+    this.onChanged,
   });
 
   @override
@@ -30,6 +32,7 @@ class CustomTextFormField extends StatelessWidget {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       obscureText: obscureText ?? false,
       maxLines: maxLines ?? 1,
+      onChanged: onChanged,
       decoration: InputDecoration(
         alignLabelWithHint: true,
         labelText: labelText,

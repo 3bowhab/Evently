@@ -164,4 +164,135 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get searchForEvent => 'Search for event';
+
+  @override
+  String get pleaseEnterYourName => 'Please enter your name';
+
+  @override
+  String get nameMustBeAtLeast3Characters =>
+      'Name must be at least 3 characters';
+
+  @override
+  String get pleaseEnterYourEmail => 'Please enter your email';
+
+  @override
+  String get invalidEmailFormat => 'Invalid email format';
+
+  @override
+  String get pleaseEnterYourPassword => 'Please enter your password';
+
+  @override
+  String get passwordMustBeAtLeast8Characters =>
+      'Password must be at least 8 characters';
+
+  @override
+  String get mustContainAtLeastOneUppercaseLetter =>
+      'Must contain at least one uppercase letter';
+
+  @override
+  String get mustContainAtLeastOneNumber => 'Must contain at least one number';
+
+  @override
+  String get pleaseConfirmYourPassword => 'Please confirm your password';
+
+  @override
+  String get passwordsDoNotMatch => 'Passwords do not match';
+
+  @override
+  String get accountCreatedSuccessfully => 'Account created successfully';
+
+  @override
+  String get loggedInSuccessfully => 'Logged in successfully';
+
+  @override
+  String get loggedOutSuccessfully => 'Logged out successfully';
+
+  @override
+  String get invalidEmailOrPassword => 'Invalid email or password';
+
+  @override
+  String get userDisabled => 'User disabled';
+
+  @override
+  String get tooManyRequests => 'Too many requests. Try again later.';
+
+  @override
+  String get checkYourInternetConnection => 'Check your internet connection';
+
+  @override
+  String get invalidEmail => 'Invalid email';
+
+  @override
+  String get operationNotAllowed => 'Operation not allowed';
+
+  @override
+  String get emailAlreadyInUse => 'Email already in use';
+
+  @override
+  String get weakPassword => 'The password provided is too weak';
+
+  @override
+  String get requiresRecentLogin =>
+      'This operation is sensitive and requires recent authentication. Log in again before retrying.';
+
+  @override
+  String get credentialAlreadyInUse =>
+      'This credential is already associated with a different user account.';
+
+  @override
+  String get accountExistsWithDifferentCredential =>
+      'An account already exists with a different credential.';
+
+  @override
+  String get requestTimeout => 'Request timeout. Please try again.';
+
+  @override
+  String get sessionExpired => 'Session expired. Please log in again.';
+
+  @override
+  String get anErrorOccurredPleaseTryAgain =>
+      'An error occurred. Please try again.';
+
+  @override
+  String get confirmLogout => 'Confirm Logout';
+
+  @override
+  String get areYouSureYouWantToLogout => 'Are you sure you want to logout?';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get eventDetails => 'Event Details';
+
+  @override
+  String get editEvent => 'Edit Event';
+
+  @override
+  String get updateEvent => 'Update Event';
+
+  @override
+  String get deleteEvent => 'Delete Event';
+
+  @override
+  String get areYouSureYouWantToDeleteThisEvent =>
+      'Are you sure you want to delete this event?';
+
+  @override
+  String get eventDeletedSuccessfully => 'Event deleted successfully';
+
+  @override
+  String get eventUpdatedSuccessfully => 'Event updated successfully';
+
+  @override
+  String get failedToUpdateEvent => 'Failed to update event: ';
+
+  @override
+  String get eventAddedSuccessfully => 'Event added successfully';
+
+  @override
+  String get failedToAddEvent => 'Failed to add event: ';
 }
