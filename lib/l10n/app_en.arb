@@ -175,5 +175,13 @@
     "areYouSureYouWantToDeleteThisEvent": "Are you sure you want to delete this event?",
     "@areYouSureYouWantToDeleteThisEvent": {},
     "eventDeletedSuccessfully": "Event deleted successfully",
-    "@eventDeletedSuccessfully": {}
+    "@eventDeletedSuccessfully": {},
+    "eventUpdatedSuccessfully": "Event updated successfully",
+    "@eventUpdatedSuccessfully": {},
+    "failedToUpdateEvent": "Failed to update event: ",
+    "@failedToUpdateEvent": {},
+    "eventAddedSuccessfully": "Event added successfully",
+    "@eventAddedSuccessfully": {},
+    "failedToAddEvent": "Failed to add event: ",
+    "@failedToAddEvent": {}
 }

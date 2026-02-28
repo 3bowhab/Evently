@@ -192,7 +192,7 @@ class _AddEventState extends State<AddEvent> {
                           userProvider.currentUser!.uid,
                         ).then((_) async {
                           ToastUtils.showSuccessToast(
-                            'Event updated successfully!',
+                            AppLocalizations.of(context)!.eventUpdatedSuccessfully,
                             context,
                           );
 
@@ -203,7 +203,7 @@ class _AddEventState extends State<AddEvent> {
                           Navigator.pop(context, event);
                         }).catchError((error) {
                           ToastUtils.showErrorToast(
-                            'Failed to update event: $error',
+                            AppLocalizations.of(context)!.failedToUpdateEvent,
                             context,
                           );
                         });
@@ -214,7 +214,7 @@ class _AddEventState extends State<AddEvent> {
                             )
                             .then((_) async {
                               ToastUtils.showSuccessToast(
-                                'Event added successfully!',
+                                AppLocalizations.of(context)!.eventAddedSuccessfully,
                                 context,
                               );
 
@@ -226,7 +226,7 @@ class _AddEventState extends State<AddEvent> {
                             })
                             .catchError((error) {
                               ToastUtils.showErrorToast(
-                                'Failed to add event: $error',
+                                AppLocalizations.of(context)!.failedToAddEvent,
                                 context,
                               );
                             });

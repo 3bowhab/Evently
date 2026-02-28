@@ -87,5 +87,9 @@
     "updateEvent": "تحديث الفعالية",
     "deleteEvent": "حذف الفعالية",
     "areYouSureYouWantToDeleteThisEvent": "هل أنت متأكد أنك تريد حذف هذه الفعالية؟",
-    "eventDeletedSuccessfully": "تم حذف الفعالية بنجاح"
+    "eventDeletedSuccessfully": "تم حذف الفعالية بنجاح",
+    "eventUpdatedSuccessfully": "تم تحديث الفعالية بنجاح",
+    "failedToUpdateEvent": "فشل في تحديث الفعالية",
+    "eventAddedSuccessfully": "تم إضافة الفعالية بنجاح",
+    "failedToAddEvent": "فشل في إضافة الفعالية"
 }

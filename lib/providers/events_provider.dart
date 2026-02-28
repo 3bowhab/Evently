@@ -52,14 +52,8 @@ class EventsProvider extends ChangeNotifier {
     favoriteEvents = await FirebaseService.getFavoriteEventsFromFirestore(
       userId,
     );
-    notifyListeners();
-  }
 
-  // Filter favorite events by event type
-  void getFilterFavoriteEventsByEventType(String eventType) {
-    filteredFavoriteEvents = favoriteEvents
-        .where((event) => event.eventType == eventType)
-        .toList();
+    filteredFavoriteEvents = favoriteEvents;
     notifyListeners();
   }
 
@@ -74,6 +68,19 @@ class EventsProvider extends ChangeNotifier {
     await FirebaseService.getEventsCollection(
       userId,
     ).doc(event.id).update(event.toFirestore());
+    notifyListeners();
+  }
+
+  void searchInFavoriteEvents(String query) {
+    if (query.isEmpty) {
+      filteredFavoriteEvents = favoriteEvents;
+    } else {
+      filteredFavoriteEvents = favoriteEvents.where((event) {
+        final title = event.title.toLowerCase();
+        final search = query.toLowerCase();
+        return title.contains(search);
+      }).toList();
+    }
     notifyListeners();
   }
 }

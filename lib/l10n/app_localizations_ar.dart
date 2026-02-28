@@ -282,4 +282,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get eventDeletedSuccessfully => 'تم حذف الفعالية بنجاح';
+
+  @override
+  String get eventUpdatedSuccessfully => 'تم تحديث الفعالية بنجاح';
+
+  @override
+  String get failedToUpdateEvent => 'فشل في تحديث الفعالية';
+
+  @override
+  String get eventAddedSuccessfully => 'تم إضافة الفعالية بنجاح';
+
+  @override
+  String get failedToAddEvent => 'فشل في إضافة الفعالية';
 }

@@ -15,6 +15,7 @@ import 'package:evently/ui/main_layout/event_features/add_event/view/add_event.d
 import 'package:evently/ui/main_layout/event_features/event_details/view/event_details.dart';
 import 'package:evently/ui/main_layout/main_layout_view.dart';
 import 'package:evently/l10n/app_localizations.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -23,8 +24,19 @@ import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   final bool seenIntro = await PrefsService.hasSeenIntro();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  final firebaseUser = FirebaseAuth.instance.currentUser;
+  final userProvider = UserProvider();
+
+  if (firebaseUser != null) {
+    await userProvider.getUserData(firebaseUser.uid);
+  }
+  
   runApp(
     MultiProvider(
       providers: [
@@ -32,18 +44,19 @@ void main() async {
         ChangeNotifierProvider<LanguageProvider>(
           create: (_) => LanguageProvider(),
         ),
-        ChangeNotifierProvider<UserProvider>(create: (_) => UserProvider()),
+        ChangeNotifierProvider<UserProvider>.value(value: userProvider),
         ChangeNotifierProvider<EventsProvider>(create: (_) => EventsProvider()),
       ],
-      child: MyApp(seenIntro: seenIntro),
+      child: MyApp(seenIntro: seenIntro, isLoggedIn: firebaseUser != null),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
   final bool seenIntro;
+  final bool isLoggedIn;
 
-  const MyApp({super.key, required this.seenIntro});
+  const MyApp({super.key, required this.seenIntro, required this.isLoggedIn});
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +92,7 @@ class MyApp extends StatelessWidget {
       // themeMode: ThemeMode.dark,
 
       // Initial route setup
-      initialRoute: seenIntro ? AppRoutes.registerView : AppRoutes.setupView,
+      initialRoute: getInitialRoute(),
       routes: {
         AppRoutes.setupView: (context) => const SetupView(),
         AppRoutes.mainLayoutView: (context) => const MainLayoutView(),
@@ -91,5 +104,15 @@ class MyApp extends StatelessWidget {
         AppRoutes.eventDetailsView: (context) => const EventDetails(),
       },
     );
+  }
+
+   String getInitialRoute() {
+    if (isLoggedIn) {
+      return AppRoutes.mainLayoutView;
+    } else if (!seenIntro) {
+      return AppRoutes.setupView;
+    } else {
+      return AppRoutes.registerView;
+    }
   }
 }

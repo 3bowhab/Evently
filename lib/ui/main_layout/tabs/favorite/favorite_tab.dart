@@ -1,11 +1,9 @@
-import 'package:evently/core/extensions/responsive_size_extension.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/models/event_type.dart';
 import 'package:evently/providers/events_provider.dart';
 import 'package:evently/providers/user_provider.dart';
 import 'package:evently/ui/auth_flow/widgets/custom_text_form_field.dart';
 import 'package:evently/ui/main_layout/tabs/favorite/event_list_view.dart';
-import 'package:evently/ui/main_layout/tabs/home/widgets/custom_tab_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -18,10 +16,12 @@ class FavoriteTab extends StatefulWidget {
 
 class _FavoriteTabState extends State<FavoriteTab> {
   late final EventsProvider readEventsProvider;
+  late TextEditingController searchController;
 
   @override
   void initState() {
     super.initState();
+    searchController = TextEditingController();
     readEventsProvider = context.read<EventsProvider>();
     readEventsProvider.selectedEventTypeIndex = 0;
     getEvents();
@@ -43,42 +43,21 @@ class _FavoriteTabState extends State<FavoriteTab> {
       child: Scaffold(
         appBar: AppBar(
           title: CustomTextFormField(
-            controller: TextEditingController(),
+            controller: searchController,
             validator: (_) => null,
             labelText: AppLocalizations.of(context)!.searchForEvent,
             suffixIcon: Icons.search,
+            onChanged: (value) {
+              context.read<EventsProvider>().searchInFavoriteEvents(value);
+            },
           ),
           titleSpacing: 0,
-          bottom: PreferredSize(
-            preferredSize: Size.fromHeight(60.height),
-            child: CustomTabBar(
-              selectedIndex: eventsProvider.selectedEventTypeIndex,
-              eventTab: eventTab,
-              context: context,
-              onTap: (index) {
-                context.read<EventsProvider>().changeSelectedEventTypeIndex(
-                  index,
-                );
-                if (index == 0) {
-                  context.read<EventsProvider>().getFavoriteEvents(
-                    context.read<UserProvider>().currentUser?.uid ?? '',
-                  );
-                } else {
-                  context
-                      .read<EventsProvider>()
-                      .getFilterFavoriteEventsByEventType(eventTab[index].name);
-                }
-              },
-            ),
-          ),
         ),
         body: Column(
           children: [
             Expanded(
               child: FavoriteEventListView(
-                events: eventsProvider.selectedEventTypeIndex == 0
-                    ? eventsProvider.favoriteEvents
-                    : eventsProvider.filteredFavoriteEvents,
+                events: eventsProvider.filteredFavoriteEvents,
               ),
             ),
           ],
