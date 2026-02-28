@@ -1,7 +1,7 @@
 import 'package:evently/core/extensions/responsive_size_extension.dart';
 import 'package:evently/core/extensions/responsive_sized_box_extension.dart';
 import 'package:evently/models/event_type.dart';
-import 'package:evently/ui/main_layout/event_features/add_event/widgets/event_type_element.dart';
+import 'package:evently/ui/main_layout/event_features/add_update_event/widgets/event_type_element.dart';
 import 'package:flutter/material.dart';
 
 class EventTypesListView extends StatelessWidget {

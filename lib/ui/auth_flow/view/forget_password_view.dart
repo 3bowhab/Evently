@@ -3,7 +3,7 @@ import 'package:evently/core/constants/app_padding.dart';
 import 'package:evently/core/extensions/responsive_sized_box_extension.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/ui/auth_flow/widgets/custom_button.dart';
-import 'package:evently/ui/main_layout/event_features/add_event/widgets/app_bar_title.dart';
+import 'package:evently/ui/main_layout/event_features/add_update_event/widgets/app_bar_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 

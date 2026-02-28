@@ -5,7 +5,7 @@ import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/models/event.dart';
 import 'package:evently/providers/events_provider.dart';
 import 'package:evently/providers/user_provider.dart';
-import 'package:evently/ui/main_layout/event_features/add_event/widgets/app_bar_title.dart';
+import 'package:evently/ui/main_layout/event_features/add_update_event/widgets/app_bar_title.dart';
 import 'package:evently/ui/main_layout/event_features/event_details/widgets/appbar_action_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

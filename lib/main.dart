@@ -11,7 +11,7 @@ import 'package:evently/ui/auth_flow/view/login_view.dart';
 import 'package:evently/ui/auth_flow/view/register_view.dart';
 import 'package:evently/ui/initial_flow/view/onboardings_view.dart';
 import 'package:evently/ui/initial_flow/view/setup_view.dart';
-import 'package:evently/ui/main_layout/event_features/add_event/view/add_event.dart';
+import 'package:evently/ui/main_layout/event_features/add_update_event/view/add_and_update_event.dart';
 import 'package:evently/ui/main_layout/event_features/event_details/view/event_details.dart';
 import 'package:evently/ui/main_layout/main_layout_view.dart';
 import 'package:evently/l10n/app_localizations.dart';
@@ -100,7 +100,7 @@ class MyApp extends StatelessWidget {
         AppRoutes.loginView: (context) => const LoginView(),
         AppRoutes.registerView: (context) => const RegisterView(),
         AppRoutes.forgetPasswordView: (context) => const ForgetPasswordView(),
-        AppRoutes.addEventView: (context) => const AddEvent(),
+        AppRoutes.addEventView: (context) => const AddAndUpdateEvent(),
         AppRoutes.eventDetailsView: (context) => const EventDetails(),
       },
     );
