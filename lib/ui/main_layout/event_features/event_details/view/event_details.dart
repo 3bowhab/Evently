@@ -2,7 +2,7 @@ import 'package:evently/core/constants/app_padding.dart';
 import 'package:evently/core/extensions/responsive_sized_box_extension.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/models/event.dart';
-import 'package:evently/ui/main_layout/event_features/add_event/widgets/event_image.dart';
+import 'package:evently/ui/main_layout/event_features/add_update_event/widgets/event_image.dart';
 import 'package:evently/ui/main_layout/event_features/event_details/widgets/edit_app_bar.dart';
 import 'package:evently/ui/main_layout/event_features/event_details/widgets/event_info_container.dart';
 import 'package:flutter/material.dart';

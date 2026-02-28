@@ -12,22 +12,22 @@ import 'package:evently/providers/user_provider.dart';
 import 'package:evently/services/firebase_service.dart';
 import 'package:evently/ui/auth_flow/widgets/custom_button.dart';
 import 'package:evently/ui/auth_flow/widgets/custom_text_form_field.dart';
-import 'package:evently/ui/main_layout/event_features/add_event/widgets/app_bar_title.dart';
-import 'package:evently/ui/main_layout/event_features/add_event/widgets/date_and_time_widget.dart';
-import 'package:evently/ui/main_layout/event_features/add_event/widgets/event_image.dart';
-import 'package:evently/ui/main_layout/event_features/add_event/widgets/event_types_list_view.dart';
+import 'package:evently/ui/main_layout/event_features/add_update_event/widgets/app_bar_title.dart';
+import 'package:evently/ui/main_layout/event_features/add_update_event/widgets/date_and_time_widget.dart';
+import 'package:evently/ui/main_layout/event_features/add_update_event/widgets/event_image.dart';
+import 'package:evently/ui/main_layout/event_features/add_update_event/widgets/event_types_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-class AddEvent extends StatefulWidget {
-  const AddEvent({super.key});
+class AddAndUpdateEvent extends StatefulWidget {
+  const AddAndUpdateEvent({super.key});
 
   @override
-  State<AddEvent> createState() => _AddEventState();
+  State<AddAndUpdateEvent> createState() => _AddAndUpdateEventState();
 }
 
-class _AddEventState extends State<AddEvent> {
+class _AddAndUpdateEventState extends State<AddAndUpdateEvent> {
   int selectedIndex = 0;
   DateTime? selectedDate;
   String? formatedDate;
