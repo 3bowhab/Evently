@@ -1,43 +1,70 @@
 import 'package:flutter/material.dart';
 
 typedef ValidatorFunction = String? Function(String?);
+typedef OnChangedFunction = void Function(String);
 
-class CustomTextFormField extends StatelessWidget {
+class CustomTextFormField extends StatefulWidget {
   final TextEditingController controller;
   final ValidatorFunction validator;
-  final bool? obscureText;
+  final bool isPassword;
   final String labelText;
   final IconData? prefixIcon;
   final IconData? suffixIcon;
   final int? maxLines;
-  final Function(String)? onChanged;
+  final OnChangedFunction? onChanged;
 
   const CustomTextFormField({
     super.key,
     required this.controller,
     required this.validator,
-    this.obscureText, 
     required this.labelText,
+    this.isPassword = false,
     this.prefixIcon,
-    this.suffixIcon, 
+    this.suffixIcon,
     this.maxLines,
     this.onChanged,
   });
 
   @override
+  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
+}
+
+class _CustomTextFormFieldState extends State<CustomTextFormField> {
+  late bool obscureText;
+
+  @override
+  void initState() {
+    super.initState();
+    obscureText = widget.isPassword;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: controller,
-      validator: validator,
+      controller: widget.controller,
+      validator: widget.validator,
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      obscureText: obscureText ?? false,
-      maxLines: maxLines ?? 1,
-      onChanged: onChanged,
+      obscureText: obscureText,
+      maxLines: widget.maxLines ?? 1,
+      onChanged: widget.onChanged,
       decoration: InputDecoration(
         alignLabelWithHint: true,
-        labelText: labelText,
-        prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
-        suffixIcon: suffixIcon != null ? Icon(suffixIcon) : null,
+        labelText: widget.labelText,
+        prefixIcon: widget.prefixIcon != null ? Icon(widget.prefixIcon) : null,
+        suffixIcon: widget.isPassword
+            ? IconButton(
+                onPressed: () {
+                  setState(() {
+                    obscureText = !obscureText;
+                  });
+                },
+                icon: Icon(
+                  obscureText
+                      ? Icons.visibility_off_outlined
+                      : Icons.visibility_outlined,
+                ),
+              )
+            : (widget.suffixIcon != null ? Icon(widget.suffixIcon) : null),
       ),
     );
   }
