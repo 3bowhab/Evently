@@ -188,25 +188,31 @@ class _AddAndUpdateEventState extends State<AddAndUpdateEvent> {
 
                       if (isEdit) {
                         FirebaseService.updateEventInFirestore(
-                          event,
-                          userProvider.currentUser!.uid,
-                        ).then((_) async {
-                          ToastUtils.showSuccessToast(
-                            AppLocalizations.of(context)!.eventUpdatedSuccessfully,
-                            context,
-                          );
+                              event,
+                              userProvider.currentUser!.uid,
+                            )
+                            .then((_) async {
+                              ToastUtils.showSuccessToast(
+                                AppLocalizations.of(
+                                  context,
+                                )!.eventUpdatedSuccessfully,
+                                context,
+                              );
 
-                          await context.read<EventsProvider>().getAllEvents(
-                            userProvider.currentUser!.uid,
-                          );
+                              await context.read<EventsProvider>().getAllEvents(
+                                userProvider.currentUser!.uid,
+                              );
 
-                          Navigator.pop(context, event);
-                        }).catchError((error) {
-                          ToastUtils.showErrorToast(
-                            AppLocalizations.of(context)!.failedToUpdateEvent,
-                            context,
-                          );
-                        });
+                              Navigator.pop(context, event);
+                            })
+                            .catchError((error) {
+                              ToastUtils.showErrorToast(
+                                AppLocalizations.of(
+                                  context,
+                                )!.failedToUpdateEvent,
+                                context,
+                              );
+                            });
                       } else {
                         FirebaseService.addEventToFirestore(
                               event,
@@ -214,7 +220,9 @@ class _AddAndUpdateEventState extends State<AddAndUpdateEvent> {
                             )
                             .then((_) async {
                               ToastUtils.showSuccessToast(
-                                AppLocalizations.of(context)!.eventAddedSuccessfully,
+                                AppLocalizations.of(
+                                  context,
+                                )!.eventAddedSuccessfully,
                                 context,
                               );
 
@@ -254,7 +262,8 @@ class _AddAndUpdateEventState extends State<AddAndUpdateEvent> {
       lastDate: DateTime.now().add(Duration(days: 730)),
       builder: (context, child) {
         return Theme(
-          data: Provider.of<ThemeProvider>(context).currentMode == ThemeMode.dark
+          data:
+              Provider.of<ThemeProvider>(context).currentMode == ThemeMode.dark
               ? ThemeData.dark(useMaterial3: true)
               : ThemeData.light(useMaterial3: true),
           child: child!,
@@ -275,7 +284,8 @@ class _AddAndUpdateEventState extends State<AddAndUpdateEvent> {
       initialTime: TimeOfDay.now(),
       builder: (context, child) {
         return Theme(
-          data: Provider.of<ThemeProvider>(context).currentMode == ThemeMode.dark
+          data:
+              Provider.of<ThemeProvider>(context).currentMode == ThemeMode.dark
               ? ThemeData.dark(useMaterial3: true)
               : ThemeData.light(useMaterial3: true),
           child: child!,
