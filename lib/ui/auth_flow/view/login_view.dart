@@ -96,6 +96,7 @@ class _LoginViewState extends State<LoginView> {
                     labelText: AppLocalizations.of(context)!.enterYourPassword,
                     prefixIcon: Icons.lock_outline,
                     suffixIcon: Icons.visibility_off_outlined,
+                    isPassword: true,
                   ),
 
                   // forget password

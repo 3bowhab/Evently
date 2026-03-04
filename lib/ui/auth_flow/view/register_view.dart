@@ -42,7 +42,7 @@ class _RegisterViewState extends State<RegisterView> {
   void initState() {
     super.initState();
     _nameController = TextEditingController(text: "Ali Ibrahim");
-    _emailController = TextEditingController(text: "ali1@gmail.com");
+    _emailController = TextEditingController(text: "ali2@gmail.com");
     _passwordController = TextEditingController(text: "Password&123");
     _confirmPasswordController = TextEditingController(text: "Password&123");
   }
@@ -111,6 +111,7 @@ class _RegisterViewState extends State<RegisterView> {
                     labelText: AppLocalizations.of(context)!.enterYourPassword,
                     prefixIcon: Icons.lock_outline,
                     suffixIcon: Icons.visibility_off_outlined,
+                    isPassword: true,
                   ),
                   16.verticalSizedBox,
                   CustomTextFormField(
@@ -125,6 +126,7 @@ class _RegisterViewState extends State<RegisterView> {
                     )!.confirmYourPassword,
                     prefixIcon: Icons.lock_outline,
                     suffixIcon: Icons.visibility_off_outlined,
+                    isPassword: true,
                   ),
 
                   // Register button
