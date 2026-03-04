@@ -1,16 +1,62 @@
-# evently
+# Evently - Event Management Application
 
-A new Flutter project.
+Evently is a feature-rich Flutter application developed as part of my training at Route Academy.
 
-## Getting Started
+The app demonstrates real-world mobile development concepts including authentication, cloud database integration, state management, localization, and dynamic UI customization.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## Key Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Secure Authentication using Firebase Auth
+- Email & Password
+- Google Sign-In
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Cloud Firestore Integration
+- Real-time data storage
+- Full CRUD operations
+
+### Event Management
+- Add Events
+- Edit Events
+- Delete Events
+- Categorized Events (Sports, Birthday, etc.)
+- Favorites System
+- Search inside Favorites
+
+### Localization
+- Arabic & English support
+
+### Dynamic Theming
+- Light & Dark Mode
+
+---
+
+## 🛠 Tech Stack
+
+- Flutter
+- Firebase Authentication
+- Cloud Firestore
+- Provider (State Management)
+
+---
+
+## What I Learned
+
+Through this project, I gained hands-on experience in:
+
+- Managing app-wide state efficiently
+- Structuring scalable Flutter applications
+- Integrating backend services with Firebase
+- Handling user authentication securely
+- Building responsive and user-friendly UI
+
+---
+## Demo Video
+https://drive.google.com/file/d/1zB18fagG3Xps23pZ0AqxEhcyJ3gmemXo/view?usp=sharing
+
+## Developed By
+
+**Ali Ibrahim**  
+Flutter Developer  
+Route Academy Trainee
